@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ReactionTimer"
+            android:label="@string/title_activity_reaction_timer"
+            android:parentActivityName=".ModeSelectionActivity">
+        </activity>
     </application>
 
 </manifest>

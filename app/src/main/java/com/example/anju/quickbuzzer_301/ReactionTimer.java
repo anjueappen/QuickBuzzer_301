@@ -1,46 +1,27 @@
 package com.example.anju.quickbuzzer_301;
 
-import android.content.Intent;
+import android.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-public class ModeSelectionActivity extends ActionBarActivity {
+public class ReactionTimer extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mode_selection);
-        Button singlePlayerButton = (Button) findViewById(R.id.single_player_button);
-        Button multiplayerButton = (Button) findViewById(R.id.multiplayer_button);
+        FragmentManager fragmentManager = getFragmentManager();
+        SinglePlayerInstructionsFragment dialog = new SinglePlayerInstructionsFragment();
 
-
-        singlePlayerButton.setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                /*Make a new Activity for the single player game*/
-                Intent intent = new Intent(v.getContext(), ReactionTimer.class);
-                startActivity(intent);
-
-            }
-        });
-
-    multiplayerButton.setOnClickListener(new View.OnClickListener(){
-
-        public void onClick(View v){
-                /*Make a new Activity for the multiplayer game*/
-        }
-    });
-}
-
+        dialog.show(fragmentManager, "Not sure what this does");
+        //setContentView(R.layout.activity_reaction_timer);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_reaction_timer, menu);
         return true;
     }
 

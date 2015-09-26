@@ -1,5 +1,5 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment"
     android:name="com.example.anju.quickbuzzer_301.MainActivityFragment"
-    tools:layout="@layout/single_player" android:layout_width="match_parent"
+    tools:layout="@layout/activity_reaction_timer" android:layout_width="match_parent"
     android:layout_height="match_parent" />
