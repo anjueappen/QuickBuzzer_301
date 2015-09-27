@@ -31,38 +31,38 @@ public class ReactionTimer extends ActionBarActivity{
  //http://stackoverflow.com/questions/18598701/calling-from-wrong-thread-exception by Raghunadan
 
     protected void measureReactionTime(){
-        Timer timer = new Timer();
         int delay = (10 + new Random().nextInt(1995));
-        //setContentView(R.layout.test_screen);
+
+        Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-
+                long startTime = System.currentTimeMillis();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        long startTime = System.currentTimeMillis();
-                        showButtonAndStartReactionTimer();
-                        reactionTimes.add(System.currentTimeMillis() - startTime);
+                        setContentView(R.layout.activity_reaction_timer);
+                        //click.setVisibility(View.VISIBLE);
+                        click.setClickable(true);
+                        click.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                click.setVisibility(View.GONE);
+                                click.setClickable(false);
+                            }
+                        });
                     }
                 });
-
+                reactionTimes.add(System.currentTimeMillis() - startTime);
             }
+
         }, delay, (10 + new Random().nextInt(1995)));
 
     }
 
     private void showButtonAndStartReactionTimer(){
-        click.setVisibility(View.VISIBLE);
-        click.setClickable(true);
-        //setContentView(R.layout.activity_reaction_timer);
-        click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                click.setVisibility(View.GONE);
-                click.setClickable(false);
-            }
-        });
+
+
     }
 
     @Override
