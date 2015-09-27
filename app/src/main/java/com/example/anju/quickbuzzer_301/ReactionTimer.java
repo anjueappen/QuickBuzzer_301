@@ -12,7 +12,7 @@ public class ReactionTimer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragmentManager fragmentManager = getFragmentManager();
-        SinglePlayerInstructionsFragment dialog = new SinglePlayerInstructionsFragment();
+        ReactionTimerDialogFragment dialog = new ReactionTimerDialogFragment();
 
         dialog.show(fragmentManager, "Not sure what this does");
         //setContentView(R.layout.activity_reaction_timer);
