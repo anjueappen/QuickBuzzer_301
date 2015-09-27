@@ -24,7 +24,6 @@ public class ModeSelectionActivity extends ActionBarActivity {
                 /*Make a new Activity for the single player game*/
                 Intent intent = new Intent(v.getContext(), ReactionTimer.class);
                 startActivity(intent);
-
             }
         });
 
@@ -32,8 +31,8 @@ public class ModeSelectionActivity extends ActionBarActivity {
 
         public void onClick(View v){
                 /*Make a new Activity for the multiplayer game*/
-        }
-    });
+            }
+        });
 }
 
 
