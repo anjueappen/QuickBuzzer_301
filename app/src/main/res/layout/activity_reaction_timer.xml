@@ -13,6 +13,5 @@
         android:id="@+id/game_button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+        android:textStyle="bold" />
 </RelativeLayout>

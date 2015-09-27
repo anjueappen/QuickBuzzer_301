@@ -22,7 +22,7 @@ public class ReactionTimer extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = LayoutInflater.from(ReactionTimer.this);
         View view = inflater.inflate(R.layout.activity_reaction_timer, null);
         click = (Button) view.findViewById(R.id.game_button);
 
@@ -31,37 +31,48 @@ public class ReactionTimer extends ActionBarActivity{
         ReactionTimerDialogFragment dialog = new ReactionTimerDialogFragment();
         dialog.show(fragmentManager, "Not sure what this does");
 
-        click.setVisibility(View.GONE);
-        setContentView(R.layout.test_screen);
-        //measureReactionTime();
+        //click.setVisibility(View.INVISIBLE);
+
+        measureReactionTime();
 
         //setContentView(R.layout.activity_reaction_timer);
     }
+ //http://stackoverflow.com/questions/18598701/calling-from-wrong-thread-exception by Raghunadan
 
     protected void measureReactionTime(){
         Timer timer = new Timer();
         int delay = (10 + new Random().nextInt(1995));
-
+        //setContentView(R.layout.test_screen);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                long startTime = System.currentTimeMillis();
-                //showButtonAndStartReactionTimer();
-                reactionTimes.add(System.currentTimeMillis() - startTime);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        long startTime = System.currentTimeMillis();
+                        showButtonAndStartReactionTimer();
+                        reactionTimes.add(System.currentTimeMillis() - startTime);
+                    }
+                });
+
             }
         }, delay, (10 + new Random().nextInt(1995)));
 
     }
 
-/*    private void showButtonAndStartReactionTimer(){
+    private void showButtonAndStartReactionTimer(){
         click.setVisibility(View.VISIBLE);
+        click.setClickable(true);
+        setContentView(R.layout.activity_reaction_timer);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                click.setVisibility(View.INVISIBLE);
+                click.setVisibility(View.GONE);
+                click.setClickable(false);
             }
         });
-    }*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
