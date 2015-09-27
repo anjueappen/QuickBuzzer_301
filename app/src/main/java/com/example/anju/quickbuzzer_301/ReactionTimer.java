@@ -25,17 +25,8 @@ public class ReactionTimer extends ActionBarActivity{
         LayoutInflater inflater = LayoutInflater.from(ReactionTimer.this);
         View view = inflater.inflate(R.layout.activity_reaction_timer, null);
         click = (Button) view.findViewById(R.id.game_button);
-
-        FragmentManager fragmentManager = getFragmentManager();
-
-        ReactionTimerDialogFragment dialog = new ReactionTimerDialogFragment();
-        dialog.show(fragmentManager, "Not sure what this does");
-
-        //click.setVisibility(View.INVISIBLE);
-
         measureReactionTime();
 
-        //setContentView(R.layout.activity_reaction_timer);
     }
  //http://stackoverflow.com/questions/18598701/calling-from-wrong-thread-exception by Raghunadan
 
@@ -64,7 +55,7 @@ public class ReactionTimer extends ActionBarActivity{
     private void showButtonAndStartReactionTimer(){
         click.setVisibility(View.VISIBLE);
         click.setClickable(true);
-        setContentView(R.layout.activity_reaction_timer);
+        //setContentView(R.layout.activity_reaction_timer);
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

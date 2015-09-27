@@ -1,5 +1,9 @@
 package com.example.anju.quickbuzzer_301;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,9 +25,23 @@ public class ModeSelectionActivity extends ActionBarActivity {
         singlePlayerButton.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                /*Make a new Activity for the single player game*/
-                Intent intent = new Intent(v.getContext(), ReactionTimer.class);
-                startActivity(intent);
+                /*Start the dialog*/
+                //FragmentManager fragmentManager = getFragmentManager();
+                AlertDialog rtDialog =  new AlertDialog.Builder(ModeSelectionActivity.this).create();
+                rtDialog.setTitle(R.string.title_activity_reaction_timer);
+                rtDialog.setMessage("Reaction Timer Instructions go here");
+
+                rtDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(((Dialog) dialog).getContext(), ReactionTimer.class);
+                        startActivity(i);
+                    }
+                });
+                rtDialog.show();
+                //ReactionTimerDialog dialog = new ReactionTimerDialog(getParent());
+                //dialog.show();
+                //dialog.show(fragmentManager, "Not sure what this does");
             }
         });
 

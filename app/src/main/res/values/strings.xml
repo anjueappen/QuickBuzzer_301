@@ -6,7 +6,7 @@
     <string name="select_mode">Select Your Mode</string>
     <string name="single_player">Single Player</string>
     <string name="multiplayer">Multiplayer</string>
-    <string name="single_player_instructions">
+    <string name="reaction_timer_instructions">
         Click the button only when
         it appears, not before.
 
