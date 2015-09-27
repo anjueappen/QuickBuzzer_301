@@ -1,5 +1,6 @@
 package com.example.anju.quickbuzzer_301;
 
+import android.app.ActivityManager;
 import android.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -31,6 +33,39 @@ public class ReactionTimer extends ActionBarActivity{
  //http://stackoverflow.com/questions/18598701/calling-from-wrong-thread-exception by Raghunadan
 
     protected void measureReactionTime(){
+
+        final Runnable showButton = new Runnable() {
+            @Override
+            public void run() {
+                click.setVisibility(View.VISIBLE);
+                click.setClickable(true);
+                click.requestLayout();
+            }
+        };
+
+        final Runnable hideButton =  new Runnable() {
+            @Override
+            public void run() {
+                click.setVisibility(View.GONE);
+                click.setClickable(false);
+                click.requestLayout();
+            }
+        };
+
+
+        final long startTime = System.currentTimeMillis();
+        click.postDelayed(showButton, (10 + new Random().nextInt(1995)));
+
+        click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click = (Button) v;
+                click.post(hideButton);
+                v.requestLayout();
+                reactionTimes.add(System.currentTimeMillis() - startTime);
+            }
+        });
+/*
         int delay = (10 + new Random().nextInt(1995));
 
         Timer timer = new Timer();
@@ -42,11 +77,15 @@ public class ReactionTimer extends ActionBarActivity{
                     @Override
                     public void run() {
                         setContentView(R.layout.activity_reaction_timer);
+
                         //click.setVisibility(View.VISIBLE);
-                        click.setClickable(true);
+                        //click.setClickable(true);
                         click.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                RelativeLayout container = (RelativeLayout) findViewById(R.id.button_layout);
+                                container.setVisibility(View.INVISIBLE);
+                                click = (Button) v;
                                 click.setVisibility(View.GONE);
                                 click.setClickable(false);
                             }
@@ -56,14 +95,10 @@ public class ReactionTimer extends ActionBarActivity{
                 reactionTimes.add(System.currentTimeMillis() - startTime);
             }
 
-        }, delay, (10 + new Random().nextInt(1995)));
+        }, delay, (10 + new Random().nextInt(1995)));*/
 
     }
 
-    private void showButtonAndStartReactionTimer(){
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
