@@ -1,24 +1,16 @@
 package com.example.anju.quickbuzzer_301;
 
-import android.app.ActivityManager;
-import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ReactionTimer extends ActionBarActivity{
     private Button click;
@@ -46,17 +38,17 @@ public class ReactionTimer extends ActionBarActivity{
                     public void onClick(View v) {
                         (findViewById(R.id.game_button)).setVisibility(View.GONE);
                         Long duration = System.currentTimeMillis() - startTime;
-                        ((TextView) findViewById(R.id.reaction_time_display)).append(duration.toString() + " ms");
+                        ((TextView) findViewById(R.id.reaction_time_display)).setText(
+                                "Reaction Time: " + duration.toString() + " ms");
                         reactionTimes.add(duration);
                     }
                 };
-
                 Button click = (Button) findViewById(R.id.game_button);
                 click.setVisibility(View.VISIBLE);
                 click.setOnClickListener(listener);
+                handler.postDelayed(this, (01 + new Random().nextInt(1995)));
             }
         };
-
         handler = new Handler();
         handler.postDelayed(reactionButton, delay);
 
