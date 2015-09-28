@@ -7,13 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Random;
 
 public class ReactionTimer extends ActionBarActivity{
-    private Button click;
     private LinkedList<Long> reactionTimes = new LinkedList<>();
     private Handler handler;
 
@@ -21,8 +21,18 @@ public class ReactionTimer extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reaction_timer);
-        Button click = (Button) findViewById(R.id.game_button);
 
+        //http://stackoverflow.com/questions/10126268/howto-fire-a-event-when-someone-click-anywhere-on-the-screen-in-a-android-app
+        // by Samir Mangroliya
+        RelativeLayout rlayout = (RelativeLayout) findViewById(R.id.button_container);
+        rlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((TextView) findViewById(R.id.error_textbox)).setText("Hey! No clicking early!");
+            }
+        });
+
+        Button click = (Button) findViewById(R.id.game_button);
         click.setVisibility(View.GONE);
         long delay = (01 + new Random().nextInt(1995));
         showButton(delay);
@@ -46,6 +56,7 @@ public class ReactionTimer extends ActionBarActivity{
                 Button click = (Button) findViewById(R.id.game_button);
                 click.setVisibility(View.VISIBLE);
                 click.setOnClickListener(listener);
+                ((TextView) findViewById(R.id.error_textbox)).setText("");
                 handler.postDelayed(this, (01 + new Random().nextInt(1995)));
             }
         };
