@@ -34,8 +34,11 @@ public class ModeSelectionActivity extends ActionBarActivity {
                 rtDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        setContentView(R.layout.plain);
+                        dialog.cancel();
                         Intent i = new Intent(((Dialog) dialog).getContext(), ReactionTimer.class);
                         startActivity(i);
+
                     }
                 });
                 rtDialog.show();

@@ -19,7 +19,15 @@
         <activity
             android:name=".ReactionTimer"
             android:label="@string/title_activity_reaction_timer"
-            android:parentActivityName=".ModeSelectionActivity">
+            android:parentActivityName=".ModeSelectionActivity" >
+        </activity>
+        <activity
+            android:name=".ReactionTimerActivity"
+            android:label="@string/title_activity_reaction_timer"
+            android:parentActivityName=".ModeSelectionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.anju.quickbuzzer_301.ModeSelectionActivity" />
         </activity>
     </application>
 

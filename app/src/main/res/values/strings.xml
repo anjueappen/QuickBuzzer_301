@@ -14,4 +14,6 @@
     </string>
     <string name="ok">OK</string>
     <string name="title_activity_reaction_timer">ReactionTimer</string>
+    <string name="title_activity_single_player_reaction_timer">SinglePlayerReactionTimer</string>
+    <string name="reaction_time">Reaction Time:</string>
 </resources>
