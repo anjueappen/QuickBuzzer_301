@@ -10,24 +10,34 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/select_mode"
         android:id="@+id/mode_selection_prompt"
+        android:layout_marginTop="101dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="158dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/single_player"
         android:id="@+id/single_player_button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/mode_selection_prompt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/multiplayer"
         android:id="@+id/multiplayer_button"
-        android:layout_marginTop="38dp"
         android:layout_below="@+id/single_player_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/statistics_button"
+        android:layout_marginTop="43dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/statistics"
+        android:id="@+id/statistics_button"
+        android:layout_below="@+id/multiplayer_button"
+        android:layout_alignStart="@+id/single_player_button"
+        android:layout_marginTop="41dp" />
 </RelativeLayout>

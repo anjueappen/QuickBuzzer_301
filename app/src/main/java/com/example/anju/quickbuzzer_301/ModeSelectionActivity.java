@@ -2,7 +2,6 @@ package com.example.anju.quickbuzzer_301;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +11,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 public class ModeSelectionActivity extends ActionBarActivity {
+
+    private static final String FILENAME = "file.sav";
+    private ReactionTimeCollection reactionTimes = new ReactionTimeCollection();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                reactionTimes.addAll((ArrayList<Long>) data.getSerializableExtra("REACTION_TIMES_ARRAY"));
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +46,12 @@ public class ModeSelectionActivity extends ActionBarActivity {
         setContentView(R.layout.mode_selection);
         Button singlePlayerButton = (Button) findViewById(R.id.single_player_button);
         Button multiplayerButton = (Button) findViewById(R.id.multiplayer_button);
-
+        Button statsButton = (Button) findViewById(R.id.statistics_button);
 
         singlePlayerButton.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
                 /*Start the dialog*/
-                //FragmentManager fragmentManager = getFragmentManager();
                 AlertDialog rtDialog =  new AlertDialog.Builder(ModeSelectionActivity.this).create();
                 rtDialog.setTitle(R.string.title_activity_reaction_timer);
                 rtDialog.setMessage("Reaction Timer Instructions go here");
@@ -37,21 +62,25 @@ public class ModeSelectionActivity extends ActionBarActivity {
                         setContentView(R.layout.plain);
                         dialog.cancel();
                         Intent i = new Intent(((Dialog) dialog).getContext(), ReactionTimer.class);
-                        startActivity(i);
+                        startActivityForResult(i, 1);
 
                     }
                 });
                 rtDialog.show();
-                //ReactionTimerDialog dialog = new ReactionTimerDialog(getParent());
-                //dialog.show();
-                //dialog.show(fragmentManager, "Not sure what this does");
             }
         });
 
-    multiplayerButton.setOnClickListener(new View.OnClickListener(){
+        multiplayerButton.setOnClickListener(new View.OnClickListener(){
 
         public void onClick(View v){
                 /*Make a new Activity for the multiplayer game*/
+            }
+        });
+
+        statsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 }
@@ -75,7 +104,39 @@ public class ModeSelectionActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveInFile() {
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME, 0);
+            BufferedWriter out =  new BufferedWriter(new OutputStreamWriter(fos));
+            Gson gson = new Gson();
+            gson.toJson(reactionTimes, out);
+            out.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadFromFile() {
+        try {
+            FileInputStream fis = openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+            //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
+            Type reactionTimeCollectionType = new TypeToken<ReactionTimeCollection>() {}.getType();
+            Gson gson = new Gson();
+            reactionTimes = gson.fromJson(in, reactionTimeCollectionType);
+
+        } catch (FileNotFoundException e) {
+            reactionTimes = new ReactionTimeCollection();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
