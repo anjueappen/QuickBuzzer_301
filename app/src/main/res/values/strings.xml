@@ -17,4 +17,9 @@
     <string name="title_activity_single_player_reaction_timer">SinglePlayerReactionTimer</string>
     <string name="reaction_time">Reaction Time:</string>
     <string name="statistics">Statistics</string>
+    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="max_time">Fastest Time</string>
+    <string name="reactions100">Last 100 Reactions</string>
+    <string name="reactionsAll">All Reactions</string>
+    <string name="reactions10">Last 10 Reactions</string>
 </resources>

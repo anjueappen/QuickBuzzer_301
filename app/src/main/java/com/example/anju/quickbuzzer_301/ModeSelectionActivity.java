@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,20 +26,20 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class ModeSelectionActivity extends ActionBarActivity {
 
     private static final String FILENAME = "file.sav";
-    private ReactionTimeCollection reactionTimes = new ReactionTimeCollection();
+    private ReactionTimeList reactionTimes = new ReactionTimeList();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
-            if(resultCode == RESULT_OK){
-                reactionTimes.addAll((ArrayList<Long>) data.getSerializableExtra("REACTION_TIMES_ARRAY"));
+            if(resultCode == RESULT_OK && data.hasExtra("com.example.anju.quickbuzzer_301")){
+                ArrayList<ReactionTime> newTimes = data.getParcelableArrayListExtra("com.example.anju.quickbuzzer_301");
+                reactionTimes.addAll(newTimes);
+                this.onResume();
             }
         }
     }
@@ -50,6 +54,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
 
         singlePlayerButton.setOnClickListener(new View.OnClickListener(){
 
+            @Override
             public void onClick(View v){
                 /*Start the dialog*/
                 AlertDialog rtDialog =  new AlertDialog.Builder(ModeSelectionActivity.this).create();
@@ -72,7 +77,8 @@ public class ModeSelectionActivity extends ActionBarActivity {
 
         multiplayerButton.setOnClickListener(new View.OnClickListener(){
 
-        public void onClick(View v){
+            @Override
+            public void onClick(View v){
                 /*Make a new Activity for the multiplayer game*/
             }
         });
@@ -81,6 +87,9 @@ public class ModeSelectionActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                Intent i = new Intent(ModeSelectionActivity.this, StatisticsActivity.class);
+                i.putExtra("com.example.anju.quickbuzzer_301.ReactionTimeList", reactionTimes);
+                startActivity(i);
             }
         });
 }
@@ -126,17 +135,23 @@ public class ModeSelectionActivity extends ActionBarActivity {
 
     private void loadFromFile() {
         try {
+
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
-            Type reactionTimeCollectionType = new TypeToken<ReactionTimeCollection>() {}.getType();
+            Type reactionTimeCollectionType = new TypeToken<ReactionTimeList>() {}.getType();
             Gson gson = new Gson();
             reactionTimes = gson.fromJson(in, reactionTimeCollectionType);
 
         } catch (FileNotFoundException e) {
-            reactionTimes = new ReactionTimeCollection();
+            reactionTimes = new ReactionTimeList();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
