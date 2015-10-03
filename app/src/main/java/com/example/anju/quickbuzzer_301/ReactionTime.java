@@ -23,9 +23,18 @@ public class ReactionTime implements Parcelable, Comparable<ReactionTime>{
         return duration;
     }
 
+    public Boolean isCalculated(){
+        return duration != 0L;
+    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return this.getDuration().toString();
     }
 
     public void setDuration(){
@@ -51,8 +60,8 @@ public class ReactionTime implements Parcelable, Comparable<ReactionTime>{
         dest.writeLong(duration);
     }
 
-    public static final Parcelable.Creator CREATOR =
-            new Parcelable.Creator() {
+    public static final Parcelable.Creator<ReactionTime> CREATOR =
+            new Parcelable.Creator<ReactionTime>() {
                 public ReactionTime createFromParcel(Parcel in) {
                     return new ReactionTime(in);
                 }

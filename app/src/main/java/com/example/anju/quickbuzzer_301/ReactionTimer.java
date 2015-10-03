@@ -11,33 +11,51 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class ReactionTimer extends ActionBarActivity{
-    private ArrayList<ReactionTime> reactionTimes = new ArrayList<ReactionTime>();
-    private Handler handler;
-    private int buttonDelay;
+    private Handler handler = new Handler(); //UI facing
+    private ReactionGame game = new ReactionGame();
+    private TimerUIUpdater uiUpdater;
+    private View.OnClickListener reaction =  new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            (findViewById(R.id.game_button)).setVisibility(View.GONE);
+            game.endGame();
+            ((TextView) findViewById(R.id.reaction_time_display)).setText(
+                    "Reaction Time: " + game.getLastReactionTime().toString() + " ms");
+        }
+    };
 
+    private View.OnClickListener earlyClick =  new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //uiUpdater.stopUIUpdates();
+            //uiUpdater.getHandler().removeCallbacks(reactionButton);
+            //handler.removeCallbacks(reactionButton);
+            uiUpdater.interrupt(earlyClickMessage);
+            //((TextView) findViewById(R.id.error_textbox)).setText("Hey! No clicking early!");
+            //uiUpdater.startUIUpdates();
+        }
+    };
+
+    //Runnable to repeat
     Runnable reactionButton =  new Runnable() {
         @Override
         public void run() {
-            final ReactionTime rt = new ReactionTime();
-            View.OnClickListener listener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    (findViewById(R.id.game_button)).setVisibility(View.GONE);
-                    rt.setDuration();
-                    ((TextView) findViewById(R.id.reaction_time_display)).setText(
-                            "Reaction Time: " + rt.getDuration().toString() + " ms");
-                    reactionTimes.add(rt);
-                }
-            };
             Button click = (Button) findViewById(R.id.game_button);
             click.setVisibility(View.VISIBLE);
-            click.setOnClickListener(listener);
+            game.startGame();
+            click.setOnClickListener(reaction);
             ((TextView) findViewById(R.id.error_textbox)).setText("");
-            handler.postDelayed(this, (01 + new Random().nextInt(1995)));
+        }
+    };
+
+    //Runnable for unwanted clicks
+    Runnable earlyClickMessage = new Runnable() {
+        @Override
+        public void run() {
+            ((TextView) findViewById(R.id.error_textbox)).setText("Hey! No clicking early!");
         }
     };
 
@@ -48,22 +66,16 @@ public class ReactionTimer extends ActionBarActivity{
 
         //http://stackoverflow.com/questions/10126268/howto-fire-a-event-when-someone-click-anywhere-on-the-screen-in-a-android-app
         // by Samir Mangroliya
+
         RelativeLayout rlayout = (RelativeLayout) findViewById(R.id.button_container);
-        buttonDelay = (01 + new Random().nextInt(1995));
-        rlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((TextView) findViewById(R.id.error_textbox)).setText("Hey! No clicking early!");
-                handler.removeCallbacks(reactionButton);
-                buttonDelay = (01 + new Random().nextInt(1995));
-                handler.postDelayed(reactionButton, buttonDelay);
+        rlayout.setOnClickListener(earlyClick);
 
-            }
-        });
-
+        //default start settings
         Button click = (Button) findViewById(R.id.game_button);
         click.setVisibility(View.GONE);
-        showButton(buttonDelay);
+        handler.postDelayed(reactionButton, makeNewDelay());
+        //uiUpdater =  new TimerUIUpdater(reactionButton);
+        //uiUpdater.startUIUpdates();
     }
 
     @Override
@@ -71,20 +83,13 @@ public class ReactionTimer extends ActionBarActivity{
         super.onPause();
 
         Bundle b = new Bundle();
-        b.putParcelableArrayList("com.example.anju.quickbuzzer_301", reactionTimes);
+        b.putParcelableArrayList("com.example.anju.quickbuzzer_301", game.getTimeList());
 
         Intent returnIntent = new Intent();
         returnIntent.putExtras(b);
         setResult(RESULT_OK, returnIntent);
 
-        reactionTimes.clear();
         finish();
-    }
-
-    private void showButton(long delay){
-        handler = new Handler();
-        handler.postDelayed(reactionButton, delay);
-
     }
 
 
@@ -106,7 +111,10 @@ public class ReactionTimer extends ActionBarActivity{
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private int makeNewDelay(){
+        return (01 + new Random().nextInt(1995));
     }
 }

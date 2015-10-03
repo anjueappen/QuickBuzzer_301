@@ -1,22 +1,45 @@
 package com.example.anju.quickbuzzer_301;
 
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
 public class StatisticsActivity extends ActionBarActivity {
     private ReactionTimeList reactionTimes;
+    private Handler handler;
+
+
+    Runnable displayStatistics = new Runnable() {
+        @Override
+        public void run() {
+            //populateStatisticsScreen();
+            //((TextView)findViewById(R.id.max10)).setText(reactionTimes.getMaxTimeOfLast(10).toString());
+            String s = "";
+            for(ReactionTime rt: reactionTimes){
+                s += rt.getDuration().toString() + " ";
+            }
+            ((TextView)findViewById(R.id.max10)).setText(s);
+        }
+    };
+    @Override
+    public View onCreatePanelView(int featureId) {
+        return super.onCreatePanelView(featureId);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_statistics);
         Bundle b = getIntent().getExtras();
         reactionTimes = b.getParcelable("com.example.anju.quickbuzzer_301");
-        //populateStatisticsScreen();
+        setContentView(R.layout.activity_statistics);
+        handler = new Handler();
+        handler.post(displayStatistics);
+
     }
 
     @Override
@@ -67,9 +90,9 @@ public class StatisticsActivity extends ActionBarActivity {
         TextView avg10 = (TextView)findViewById(R.id.average10);
         TextView avg100 = (TextView)findViewById(R.id.average100);
         TextView avgAll = (TextView)findViewById(R.id.averageAll);
-        med10.setText(reactionTimes.getMedianTimeOfLast(10).toString());
-        med100.setText(reactionTimes.getMedianTimeOfLast(100).toString());
-        medAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.size()).toString());
+        avg10.setText(reactionTimes.getMedianTimeOfLast(10).toString());
+        avg100.setText(reactionTimes.getMedianTimeOfLast(100).toString());
+        avgAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.size()).toString());
 
 
     }

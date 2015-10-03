@@ -1,6 +1,16 @@
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
 
-<TableLayout
+    <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -231,7 +241,13 @@
             android:paddingBottom="10dp" />
     </TableRow>
 
-    <TableRow
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -354,6 +370,7 @@
             android:gravity="center"
             android:layout_column="2"
             android:paddingBottom="10dp" />
+
     </TableRow>
 
     <TableRow
@@ -394,5 +411,5 @@
             android:id="@+id/clear_stats_buto"
             android:layout_column="1" />
     </TableRow>
-</TableLayout>
-
+</TableLayout> </LinearLayout>
+</ScrollView>
