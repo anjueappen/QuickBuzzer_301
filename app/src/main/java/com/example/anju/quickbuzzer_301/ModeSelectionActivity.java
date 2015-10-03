@@ -25,21 +25,20 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ModeSelectionActivity extends ActionBarActivity {
 
     private static final String FILENAME = "file.sav";
-    private ReactionTimeList reactionTimes = new ReactionTimeList();
+    private ReactionTimeBin reactionTimes = ReactionTimeBin.getInstance();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             if(resultCode == RESULT_OK && data.hasExtra("com.example.anju.quickbuzzer_301")){
-                ArrayList<ReactionTime> newTimes = data.getParcelableArrayListExtra("com.example.anju.quickbuzzer_301");
-                reactionTimes.addAll(newTimes);
-                Log.i("FromTimer", reactionTimes.toString());
+                //reactionTimes.addAll(newTimes);
                 this.onResume();
             }
         }
@@ -89,7 +88,6 @@ public class ModeSelectionActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Intent i = new Intent(ModeSelectionActivity.this, StatisticsActivity.class);
-                i.putExtra("com.example.anju.quickbuzzer_301.ReactionTimeList", reactionTimes);
                 startActivity(i);
             }
         });
@@ -140,12 +138,13 @@ public class ModeSelectionActivity extends ActionBarActivity {
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
-            Type reactionTimeCollectionType = new TypeToken<ReactionTimeList>() {}.getType();
+            Type reactionTimeCollectionType = new TypeToken<List<Long>>() {}.getType();
             Gson gson = new Gson();
-            reactionTimes = gson.fromJson(in, reactionTimeCollectionType);
+            ArrayList<Long> list = gson.fromJson(in, reactionTimeCollectionType);
+            reactionTimes.setData(list);
 
         } catch (FileNotFoundException e) {
-            reactionTimes = new ReactionTimeList();
+            reactionTimes.setData(new ArrayList<Long>());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

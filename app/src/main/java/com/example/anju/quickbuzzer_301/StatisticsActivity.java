@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 public class StatisticsActivity extends ActionBarActivity {
-    private ReactionTimeList reactionTimes;
+    private ReactionTimeBin reactionTimes;
     private Handler handler;
 
 
@@ -20,9 +20,6 @@ public class StatisticsActivity extends ActionBarActivity {
             //populateStatisticsScreen();
             //((TextView)findViewById(R.id.max10)).setText(reactionTimes.getMaxTimeOfLast(10).toString());
             String s = "";
-            for(ReactionTime rt: reactionTimes){
-                s += rt.getDuration().toString() + " ";
-            }
             ((TextView)findViewById(R.id.max10)).setText(s);
         }
     };
@@ -71,28 +68,28 @@ public class StatisticsActivity extends ActionBarActivity {
         TextView maxAll= (TextView)findViewById(R.id.maxAll);
         max10.setText(reactionTimes.getMaxTimeOfLast(10).toString());
         max100.setText(reactionTimes.getMaxTimeOfLast(100).toString());
-        maxAll.setText(reactionTimes.getMaxTimeOfLast(reactionTimes.size()).toString());
+        maxAll.setText(reactionTimes.getMaxTimeOfLast(reactionTimes.getData().size()).toString());
 
         TextView min10 = (TextView)findViewById(R.id.min10);
         TextView min100 = (TextView)findViewById(R.id.min100);
         TextView minAll = (TextView)findViewById(R.id.minAll);
         min10.setText(reactionTimes.getMinTimeOfLast(10).toString());
         min100.setText(reactionTimes.getMinTimeOfLast(100).toString());
-        minAll.setText(reactionTimes.getMinTimeOfLast(reactionTimes.size()).toString());
+        minAll.setText(reactionTimes.getMinTimeOfLast(reactionTimes.getData().size()).toString());
 
         TextView med10 = (TextView)findViewById(R.id.median10);
         TextView med100 = (TextView)findViewById(R.id.median100);
         TextView medAll = (TextView)findViewById(R.id.medianAll);
         med10.setText(reactionTimes.getMedianTimeOfLast(10).toString());
         med100.setText(reactionTimes.getMedianTimeOfLast(100).toString());
-        medAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.size()).toString());
+        medAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.getData().size()).toString());
 
         TextView avg10 = (TextView)findViewById(R.id.average10);
         TextView avg100 = (TextView)findViewById(R.id.average100);
         TextView avgAll = (TextView)findViewById(R.id.averageAll);
         avg10.setText(reactionTimes.getMedianTimeOfLast(10).toString());
         avg100.setText(reactionTimes.getMedianTimeOfLast(100).toString());
-        avgAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.size()).toString());
+        avgAll.setText(reactionTimes.getMedianTimeOfLast(reactionTimes.getData().size()).toString());
 
 
     }
