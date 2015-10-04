@@ -10,9 +10,8 @@
         <activity
             android:name=".ModeSelectionActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+            <intent-filter android:label="aeappen_reflex">
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -89,8 +89,8 @@ public class DataBin {
 
     public void clearAll(Context c){
         initializeMap(mainMap);
+        needToSave = Boolean.TRUE;
         saveInFile(c);
-
     }
 
     public Long returnLatest(){

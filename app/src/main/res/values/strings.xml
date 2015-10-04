@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">QuickBuzzer_301</string>
+    <string name="app_name">aeappen_reflex</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="click">CLICK</string>
     <string name="select_mode">Select Your Mode</string>
-    <string name="single_player">Single Player</string>
-    <string name="multiplayer">Multiplayer</string>
+    <string name="single_player">Reaction Timer</string>
+    <string name="multiplayer">Gameshow Buzzer</string>
     <string name="reaction_timer_instructions">
         When the button appears,\n
         click it quickly!\n
@@ -13,7 +13,7 @@
         Close this dialog to begin.
     </string>
     <string name="ok">OK</string>
-    <string name="title_activity_reaction_timer">ReactionTimer</string>
+    <string name="title_activity_reaction_timer">Reaction Timer</string>
     <string name="title_activity_single_player_reaction_timer">SinglePlayerReactionTimer</string>
     <string name="reaction_time">Reaction Time:</string>
     <string name="statistics">Statistics</string>
@@ -22,7 +22,7 @@
     <string name="reactions100">Last 100 Reactions</string>
     <string name="reactionsAll">All Reactions</string>
     <string name="reactions10">Last 10 Reactions</string>
-    <string name="title_activity_num_of_players">NumOfPlayersActivity</string>
+    <string name="title_activity_num_of_players">Select Players </string>
         <string name="title_game_show_dialog">Game Show Results</string>
         <string name="gameshow_results">Player %1$s Wins!\n
                                         Number of Players: %2$s</string>
@@ -31,6 +31,6 @@
             <item>3</item>
             <item>4</item>
         </string-array>
-    <string name="title_activity_game_show_activity_new">GameShowActivityNEW</string>
+    <string name="title_activity_game_show_activity_new">Game Show Activity</string>
 
 </resources>
