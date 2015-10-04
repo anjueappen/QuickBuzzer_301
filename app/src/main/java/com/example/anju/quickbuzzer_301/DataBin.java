@@ -51,6 +51,9 @@ public class DataBin {
     public List<Long> getReactionTimeData(){
         return mainMap.get("times");
     }
+    public HashMap<String, ArrayList<Long>> getAllData(){
+        return mainMap;
+    }
 
     public void addReactionTime(Long time){
         mainMap.get("times").add(time);

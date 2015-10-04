@@ -32,5 +32,6 @@
             <item>4</item>
         </string-array>
     <string name="title_activity_game_show_activity_new">Game Show Activity</string>
+    <string name="title_activity_send_email">Send Email</string>
 
 </resources>

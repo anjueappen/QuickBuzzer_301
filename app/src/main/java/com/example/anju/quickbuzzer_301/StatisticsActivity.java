@@ -1,5 +1,7 @@
 package com.example.anju.quickbuzzer_301;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,17 +9,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class StatisticsActivity extends ActionBarActivity {
     private Handler handler;
 
+
     private View.OnClickListener clearListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             DataBin.getInstance().clearAll(getBaseContext());
             handler.post(displayStatistics);
+        }
+    };
+
+    private View.OnClickListener emailListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(StatisticsActivity.this, SendEmailActivity.class);
+            startActivity(i);
         }
     };
 
@@ -39,7 +51,9 @@ public class StatisticsActivity extends ActionBarActivity {
         DataBin.getInstance().loadFromFile(getBaseContext());
         setContentView(R.layout.activity_statistics);
         Button clearButton = (Button)findViewById(R.id.clear_stats_button);
+        Button emailButton = (Button)findViewById(R.id.email_stats_button);
         clearButton.setOnClickListener(clearListener);
+        emailButton.setOnClickListener(emailListener);
         handler = new Handler();
         handler.post(displayStatistics);
 
@@ -66,8 +80,6 @@ public class StatisticsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
     public void populateStatisticsScreen(){
 

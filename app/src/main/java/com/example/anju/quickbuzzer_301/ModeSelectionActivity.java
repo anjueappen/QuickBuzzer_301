@@ -2,7 +2,6 @@ package com.example.anju.quickbuzzer_301;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -23,7 +22,6 @@ public class ModeSelectionActivity extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             if(resultCode == RESULT_OK){
-                //reactionTimes.addAll(newTimes);
                 this.onResume();
             }
         }
