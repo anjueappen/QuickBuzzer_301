@@ -29,12 +29,8 @@ public class DataBin {
     private static final String FILENAME = "file.sav";
     private static DataBin ourInstance = new DataBin();
 
-    HashMap<String, ArrayList> mainMap = new HashMap<String, ArrayList>();
+    HashMap<String, ArrayList<Long>> mainMap = new HashMap<String, ArrayList<Long>>();
 
-    private List<Integer> p2Wins;
-    private List<Integer> p3Wins;
-    private List<Integer> p4Wins;
-    private List<Long> times;
     private Boolean needToSave;
 
     public static DataBin getInstance() {
@@ -43,67 +39,82 @@ public class DataBin {
 
     private DataBin() {
         initializeMap(mainMap);
+        needToSave = Boolean.FALSE;
     }
 
-    private void initializeMap(HashMap<String, ArrayList> map){
+    private void initializeMap(HashMap<String, ArrayList<Long>> map){
         map.put("times", new ArrayList<Long>());
-        map.put("p2Wins", new ArrayList<Integer>(Arrays.asList(0, 0)));
-        map.put("p3Wins", new ArrayList<Integer>(Arrays.asList(0, 0, 0)));
-        map.put("p4Wins", new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0)));
+        map.put("twoWins", new ArrayList<Long>(Arrays.asList(0L, 0L)));
+        map.put("threeWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L)));
+        map.put("fourWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L, 0L)));
     }
-    public List<Long> getData(){
-        return times;
+    public List<Long> getReactionTimeData(){
+        return mainMap.get("times");
     }
 
     public void addReactionTime(Long time){
-        times.add(time);
+        mainMap.get("times").add(time);
         needToSave = Boolean.TRUE;
     }
 
     public void addPlayerWin(int numPlayers, int winner){
         int winIndex = winner - 1;
-        ArrayList<Integer> winlist;
-        switch (numPlayers){
-            case 2:
-                winlist = mainMap.get("p2Wins");
-                break;
-            case 3:
-                winlist = mainMap.get("p3Wins");
-                break;
-            default:
-                winlist = mainMap.get("p4Wins");
-                break;
-        }
-        int score = winlist.get(winIndex);
-        winlist.set(winIndex, score+1);
+        ArrayList<Long> winlist = getWinList(numPlayers);
+        Long score = winlist.get(winIndex);
+        winlist.set(winIndex, score + 1L);
         needToSave = Boolean.TRUE;
     }
 
+    public ArrayList<Long> getWinList(int numPlayers){
+        ArrayList<Long> winlist;
+        switch (numPlayers){
+            case 2:
+                winlist = mainMap.get("twoWins");
+                break;
+            case 3:
+                winlist = mainMap.get("threeWins");
+                break;
+            default:
+                winlist = mainMap.get("fourWins");
+                break;
+        }
+        return winlist;
+    }
+
     public void clearAll(Context c){
-        times.clear();
+        mainMap.get("times").clear();
+        mainMap.get("twoWins").clear();
+        mainMap.get("threeWins").clear();
+        mainMap.get("fourWins").clear();
         saveInFile(c);
 
     }
 
     public Long returnLatest(){
-        return times.get(times.size()-1);
+
+        ArrayList<Long> times = mainMap.get("times");
+        return times.get(times.size() - 1);
     }
 
 
     /*MATH METHODS*/
     public Long getMaxTimeOfLast(int lastNum){
+        ArrayList<Long> times = mainMap.get("times");
         if(times.size() == 0){
-            times.add(0l);
+            times.add(0L);
         }
         if (lastNum > times.size()){
             lastNum = times.size();
         }
-        return Collections.max(times.subList(times.size() - lastNum, times.size() - 1));
+        List<Long> sub = times.subList(times.size() - lastNum, times.size() - 1);
+        Long a = sub.get(1);
+        return Collections.max(sub);
     }
 
     public Long getMinTimeOfLast(int lastNum){
+        ArrayList<Long> times = mainMap.get("times");
         if(times.size() == 0){
-            times.add(0l);
+            times.add(0L);
         }
         if (lastNum > times.size()){
             lastNum = times.size();
@@ -112,8 +123,9 @@ public class DataBin {
     }
 
     public Double getAverageTimeOfLast(int lastNum){
+        ArrayList<Long> times = mainMap.get("times");
         if(times.size() == 0){
-            times.add(0l);
+            times.add(0L);
         }
         if (lastNum > times.size()){
             lastNum = times.size();
@@ -127,17 +139,17 @@ public class DataBin {
     }
 
     public Long getMedianTimeOfLast(int lastNum){
+        ArrayList<Long> times = mainMap.get("times");
         if(times.size() == 0){
-            times.add(0l);
+            times.add(0L);
         }
         //Taken and adapted from http://stackoverflow.com/questions/11955728/how-to-calculate-the-median-of-an-array
         //by lynn
         if (lastNum > times.size()){
             lastNum = times.size();
         }
-        List<Long> sublist = times.subList((times.size() -lastNum), (times.size()-1));
+        List<Long> sublist = times.subList((times.size() - lastNum), (times.size() - 1));
         Collections.sort(sublist);
-        Long median;
         if (sublist.size()% 2 == 0)
             return (sublist.get(sublist.size()/2)+ sublist.get(sublist.size()/2 - 1))/2;
         else
@@ -174,7 +186,7 @@ public class DataBin {
             FileInputStream fis = c.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
-            Type dataCollectionType = new TypeToken<HashMap<String, ArrayList>>() {}.getType();
+            Type dataCollectionType = new TypeToken<HashMap<String, ArrayList<Long>>>() {}.getType();
             Gson gson = new Gson();
             mainMap = gson.fromJson(in, dataCollectionType);
 

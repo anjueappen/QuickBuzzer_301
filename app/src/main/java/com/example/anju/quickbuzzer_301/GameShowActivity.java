@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class GameShowActivity extends ActionBarActivity {
     private Integer numPlayers;
     private Handler handler = new Handler();
@@ -49,6 +51,7 @@ public class GameShowActivity extends ActionBarActivity {
                     break;
             }
 
+            ArrayList<Long> list = DataBin.getInstance().getWinList(numPlayers);
             AlertDialog rtDialog =  new AlertDialog.Builder(GameShowActivity.this).create();
             rtDialog.setTitle(R.string.title_game_show_dialog);
             Resources res = getResources();

@@ -82,10 +82,16 @@ public class ModeSelectionActivity extends ActionBarActivity {
 }
 
 
-    @Override
+/*    @Override
     protected void onStop() {
         super.onStop();
         Context c = getBaseContext();
+        reactionTimes.saveInFile(getBaseContext());
+    }*/
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         reactionTimes.saveInFile(getBaseContext());
     }
 
@@ -121,7 +127,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
             FileOutputStream fos = getBaseContext().openFileOutput(FILENAME, 0);
             BufferedWriter out =  new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            gson.toJson(reactionTimes.getData(), out);
+            gson.toJson(reactionTimes.getReactionTimeData(), out);
             out.flush();
             fos.close();
         } catch (FileNotFoundException e) {

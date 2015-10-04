@@ -38,7 +38,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     };
 
     //Runnable to repeat
-    Runnable reactionButton =  new Runnable() {
+    private Runnable reactionButton =  new Runnable() {
         @Override
         public void run() {
             game.startIteration();
@@ -50,7 +50,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     };
 
     //Runnable for unwanted clicks
-    Runnable earlyClickMessage = new Runnable() {
+    private Runnable earlyClickMessage = new Runnable() {
         @Override
         public void run() {
             ((TextView) findViewById(R.id.error_textbox)).setText("Hey! No clicking early!");
