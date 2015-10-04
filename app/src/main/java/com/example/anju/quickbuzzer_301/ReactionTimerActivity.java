@@ -78,7 +78,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     @Override
     protected void onPause() {
         super.onPause();
-
+        ReactionTimeBin.getInstance().addAll(game.getTimeList());
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
 

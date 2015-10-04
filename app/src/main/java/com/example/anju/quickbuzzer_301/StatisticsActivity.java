@@ -16,11 +16,11 @@ public class StatisticsActivity extends ActionBarActivity {
     Runnable displayStatistics = new Runnable() {
         @Override
         public void run() {
-            //populateStatisticsScreen();
+            populateStatisticsScreen();
             //((TextView)findViewById(R.id.max10)).setText(ReactionTimeBin.getInstance().getMaxTimeOfLast(10).toString());
             String s = "";
-            ((TextView)findViewById(R.id.max10)).setText(s);
-        }
+            /*((TextView)findViewById(R.id.max10)).setText(s);
+        */}
     };
     @Override
     public View onCreatePanelView(int featureId) {
@@ -86,9 +86,9 @@ public class StatisticsActivity extends ActionBarActivity {
         TextView avg10 = (TextView)findViewById(R.id.average10);
         TextView avg100 = (TextView)findViewById(R.id.average100);
         TextView avgAll = (TextView)findViewById(R.id.averageAll);
-        avg10.setText(ReactionTimeBin.getInstance().getMedianTimeOfLast(10).toString());
-        avg100.setText(ReactionTimeBin.getInstance().getMedianTimeOfLast(100).toString());
-        avgAll.setText(ReactionTimeBin.getInstance().getMedianTimeOfLast(ReactionTimeBin.getInstance().getData().size()).toString());
+        avg10.setText(ReactionTimeBin.getInstance().getAverageTimeOfLast(10).toString());
+        avg100.setText(ReactionTimeBin.getInstance().getAverageTimeOfLast(100).toString());
+        avgAll.setText(ReactionTimeBin.getInstance().getAverageTimeOfLast(ReactionTimeBin.getInstance().getData().size()).toString());
 
 
     }

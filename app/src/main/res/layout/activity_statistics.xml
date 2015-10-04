@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textSize="15sp" android:text=" Last 10 Reactions"  android:layout_span="3"
-            android:padding="18dip" android:background="#E29990"
+            android:padding="18dip" android:background="#858484"
             android:textColor="#000"
             android:id="@+id/header10"
             android:textStyle="bold" />
@@ -124,7 +124,8 @@
             android:gravity="center"
             android:layout_column="0"
             android:textSize="20sp"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/min10"
@@ -156,7 +157,7 @@
             android:textColor="#000"
             android:id="@+id/header100"
             android:textStyle="bold"
-            android:background="#FFE5E5" />
+            android:background="#858484" />
 
 
     </TableRow>
@@ -173,7 +174,7 @@
         <TextView
             android:id="@+id/max100"
             android:layout_weight="1"
-            android:background="#FFFAFA"
+            android:background="#dcdcdc"
             android:textColor="#000000"
             android:gravity="center"
             android:textIsSelectable="false"
@@ -185,7 +186,7 @@
         <TextView
             android:id="@+id/median100"
             android:layout_weight="1"
-            android:background="#f4e3e3"
+            android:background="#d3d3d3"
             android:textColor="#000000"
             android:padding="5dp" android:gravity="center"
             android:textSize="25sp"
@@ -194,7 +195,7 @@
         <TextView
             android:id="@+id/average100"
             android:layout_weight="1"
-            android:background="#FFE5E5"
+            android:background="#cac9c9"
             android:textColor="#000000"
             android:padding="5dp" android:gravity="center"
             android:textSize="25sp"
@@ -215,7 +216,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Max"
             android:gravity="center"
-            android:background="#fffafa"
+            android:background="#dcdcdc"
             android:layout_column="0"
             android:paddingBottom="10dp" />
 
@@ -224,7 +225,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Median"
-            android:background="#f4e3e3"
+            android:background="#d3d3d3"
             android:gravity="center"
 
             android:layout_column="1"
@@ -235,7 +236,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Average"
-            android:background="#FFE5E5"
+            android:background="#cac9c9"
             android:gravity="center"
             android:layout_column="2"
             android:paddingBottom="10dp" />
@@ -257,11 +258,12 @@
             android:gravity="center"
             android:layout_column="0"
             android:textSize="20dp"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/min100"
-            android:layout_weight="1" android:background="#eabcbc"
+            android:layout_weight="1" android:background="#a09f9f"
             android:textColor="#000000"
             android:padding="7dp" android:gravity="center"
             android:layout_column="1"
@@ -285,7 +287,7 @@
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textSize="15sp" android:text=" All Reactions"  android:layout_span="3"
-            android:padding="18dip" android:background="#FFB7AA"
+            android:padding="18dip" android:background="#858484"
             android:textColor="#000"
             android:id="@+id/headerAll"
             android:textStyle="bold" />
@@ -304,7 +306,7 @@
         <TextView
             android:id="@+id/maxAll"
             android:layout_weight="1"
-            android:background="#FFE9E5"
+            android:background="#dcdcdc"
             android:textColor="#000000"
             android:gravity="center"
             android:textIsSelectable="false"
@@ -315,7 +317,7 @@
         <TextView
             android:id="@+id/medianAll"
             android:layout_weight="1"
-            android:background="#efdad6"
+            android:background="#d3d3d3"
             android:textColor="#000000"
             android:padding="5dp" android:gravity="center"
             android:textSize="25sp"
@@ -325,7 +327,7 @@
         <TextView
             android:id="@+id/averageAll"
             android:layout_weight="1"
-            android:background="#F8BBB0"
+            android:background="#cac9c9"
             android:textColor="#000000"
             android:padding="5dp" android:gravity="center"
             android:textSize="25sp"
@@ -346,7 +348,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Max"
             android:gravity="center"
-            android:background="#FFE9E5"
+            android:background="#dcdcdc"
             android:layout_column="0"
             android:paddingBottom="10dp" />
 
@@ -355,7 +357,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Median"
-            android:background="#efdad6"
+            android:background="#d3d3d3"
             android:gravity="center"
 
             android:layout_column="1"
@@ -366,7 +368,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Average"
-            android:background="#F8BBB0"
+            android:background="#cac9c9"
             android:gravity="center"
             android:layout_column="2"
             android:paddingBottom="10dp" />
@@ -383,10 +385,11 @@
             android:gravity="center"
             android:layout_column="0"
             android:textSize="20dp"
-            android:padding="7dp" />
+            android:padding="7dp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_weight="1" android:background="#FF907C"
+            android:layout_weight="1" android:background="#a09f9f"
             android:textColor="#000000"
             android:padding="7dp" android:gravity="center"
             android:layout_column="1"

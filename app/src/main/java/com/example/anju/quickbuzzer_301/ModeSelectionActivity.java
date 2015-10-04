@@ -36,7 +36,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
-            if(resultCode == RESULT_OK && data.hasExtra("com.example.anju.quickbuzzer_301")){
+            if(resultCode == RESULT_OK){
                 //reactionTimes.addAll(newTimes);
                 this.onResume();
             }

@@ -33,15 +33,33 @@ public class ReactionTimeBin {
 
     /*MATH METHODS*/
     public Long getMaxTimeOfLast(int lastNum){
-        return Collections.max(times.subList(times.size() - 1, times.size() - 1 - lastNum));
+        if(times.size() == 0){
+            times.add(0l);
+        }
+        if (lastNum > times.size()){
+            lastNum = times.size();
+        }
+        return Collections.max(times.subList(times.size() - lastNum, times.size() - 1));
     }
 
     public Long getMinTimeOfLast(int lastNum){
-        return Collections.min(times.subList((times.size() - 1), (times.size() - 1 - lastNum)));
+        if(times.size() == 0){
+            times.add(0l);
+        }
+        if (lastNum > times.size()){
+            lastNum = times.size();
+        }
+        return Collections.min(times.subList(times.size() - lastNum, times.size() - 1));
     }
 
-    public double getAverageTimeOfLast(int lastNum){
-        Collection<Long> sublist = times.subList((times.size() - 1), (times.size() - 1 - lastNum));
+    public Double getAverageTimeOfLast(int lastNum){
+        if(times.size() == 0){
+            times.add(0l);
+        }
+        if (lastNum > times.size()){
+            lastNum = times.size();
+        }
+        Collection<Long> sublist = times.subList((times.size() - lastNum), (times.size() - 1));
         double sum = 0;
         for(Long r : sublist){
             sum += r;
@@ -50,10 +68,15 @@ public class ReactionTimeBin {
     }
 
     public Long getMedianTimeOfLast(int lastNum){
+        if(times.size() == 0){
+            times.add(0l);
+        }
         //Taken and adapted from http://stackoverflow.com/questions/11955728/how-to-calculate-the-median-of-an-array
         //by lynn
-
-        List<Long> sublist = times.subList((times.size()-1), (times.size()-1 -lastNum));
+        if (lastNum > times.size()){
+            lastNum = times.size();
+        }
+        List<Long> sublist = times.subList((times.size() -lastNum), (times.size()-1));
         Collections.sort(sublist);
         Long median;
         if (sublist.size()% 2 == 0)
