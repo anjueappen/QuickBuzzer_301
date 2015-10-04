@@ -68,7 +68,6 @@ public class ReactionTimerActivity extends ActionBarActivity{
         RelativeLayout rlayout = (RelativeLayout) findViewById(R.id.button_container);
         rlayout.setOnClickListener(earlyClick);
 
-        //default start settings
         Button click = (Button) findViewById(R.id.game_button);
         click.setVisibility(View.GONE);
         handler.postDelayed(reactionButton, makeNewDelay());
@@ -78,7 +77,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        ReactionTimeBin.getInstance().addAll(game.getTimeList());
+        game.storeTimesInBin();
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
 

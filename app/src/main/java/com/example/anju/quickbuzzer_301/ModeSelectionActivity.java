@@ -11,21 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class ModeSelectionActivity extends ActionBarActivity {
 
@@ -47,6 +32,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mode_selection);
+
         Button singlePlayerButton = (Button) findViewById(R.id.single_player_button);
         Button multiplayerButton = (Button) findViewById(R.id.multiplayer_button);
         Button statsButton = (Button) findViewById(R.id.statistics_button);
@@ -74,17 +60,16 @@ public class ModeSelectionActivity extends ActionBarActivity {
             }
         });
 
-        multiplayerButton.setOnClickListener(new View.OnClickListener(){
+        multiplayerButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 /*Make a new Activity for the multiplayer game*/
                 Intent i = new Intent(ModeSelectionActivity.this, NumOfPlayersActivity.class);
                 startActivity(i);
 
             }
         });
-
         statsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +80,18 @@ public class ModeSelectionActivity extends ActionBarActivity {
         });
 }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        reactionTimes.saveInFile();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        reactionTimes.loadFromFile();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,12 +114,12 @@ public class ModeSelectionActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveInFile() {
+    /*private void saveInFile() {
         try {
-            FileOutputStream fos = openFileOutput(FILENAME, 0);
+            FileOutputStream fos = getBaseContext().openFileOutput(FILENAME, 0);
             BufferedWriter out =  new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            gson.toJson(reactionTimes, out);
+            gson.toJson(reactionTimes.getData(), out);
             out.flush();
             fos.close();
         } catch (FileNotFoundException e) {
@@ -137,7 +134,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
     private void loadFromFile() {
         try {
 
-            FileInputStream fis = openFileInput(FILENAME);
+            FileInputStream fis = getBaseContext().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
             Type reactionTimeCollectionType = new TypeToken<List<Long>>() {}.getType();
@@ -150,7 +147,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     @Override
     protected void onResume() {

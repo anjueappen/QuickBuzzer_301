@@ -41,4 +41,8 @@ public class ReactionGame {
         return currReactionTime;
     }
 
+    public void storeTimesInBin(){
+        ReactionTimeBin.getInstance().addAll(timeList);
+    }
+
 }
