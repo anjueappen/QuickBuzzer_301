@@ -88,10 +88,7 @@ public class DataBin {
     }
 
     public void clearAll(Context c){
-        mainMap.get("times").clear();
-        mainMap.get("twoWins").clear();
-        mainMap.get("threeWins").clear();
-        mainMap.get("fourWins").clear();
+        initializeMap(mainMap);
         saveInFile(c);
 
     }
@@ -106,8 +103,8 @@ public class DataBin {
     /*MATH METHODS*/
     public Long getMaxTimeOfLast(int lastNum){
         ArrayList<Long> times = mainMap.get("times");
-        if(times.size() == 0){
-            times.add(0L);
+        if(times.size() == 0L){
+            return 0L;
         }
         if (lastNum > times.size()){
             lastNum = times.size();
@@ -119,8 +116,8 @@ public class DataBin {
 
     public Long getMinTimeOfLast(int lastNum){
         ArrayList<Long> times = mainMap.get("times");
-        if(times.size() == 0){
-            times.add(0L);
+        if(times.size() == 0L){
+            return 0L;
         }
         if (lastNum > times.size()){
             lastNum = times.size();
@@ -130,8 +127,8 @@ public class DataBin {
 
     public Double getAverageTimeOfLast(int lastNum){
         ArrayList<Long> times = mainMap.get("times");
-        if(times.size() == 0){
-            times.add(0L);
+        if(times.size() == 0L){
+            return 0.0;
         }
         if (lastNum > times.size()){
             lastNum = times.size();
@@ -146,8 +143,8 @@ public class DataBin {
 
     public Long getMedianTimeOfLast(int lastNum){
         ArrayList<Long> times = mainMap.get("times");
-        if(times.size() == 0){
-            times.add(0L);
+        if(times.size() == 0L){
+            return 0L;
         }
         //Taken and adapted from http://stackoverflow.com/questions/11955728/how-to-calculate-the-median-of-an-array
         //by lynn

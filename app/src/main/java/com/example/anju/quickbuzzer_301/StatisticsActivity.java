@@ -6,11 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class StatisticsActivity extends ActionBarActivity {
     private Handler handler;
+
+    private View.OnClickListener clearListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DataBin.getInstance().clearAll(getBaseContext());
+            handler.post(displayStatistics);
+        }
+    };
 
 
     Runnable displayStatistics = new Runnable() {
@@ -29,6 +38,8 @@ public class StatisticsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         DataBin.getInstance().loadFromFile(getBaseContext());
         setContentView(R.layout.activity_statistics);
+        Button clearButton = (Button)findViewById(R.id.clear_stats_button);
+        clearButton.setOnClickListener(clearListener);
         handler = new Handler();
         handler.post(displayStatistics);
 
