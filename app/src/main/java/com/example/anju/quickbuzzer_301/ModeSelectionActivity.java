@@ -2,6 +2,7 @@ package com.example.anju.quickbuzzer_301;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -15,7 +16,7 @@ import android.widget.Button;
 public class ModeSelectionActivity extends ActionBarActivity {
 
     private static final String FILENAME = "file.sav";
-    private ReactionTimeBin reactionTimes = ReactionTimeBin.getInstance();
+    private DataBin reactionTimes = DataBin.getInstance();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -84,13 +85,14 @@ public class ModeSelectionActivity extends ActionBarActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        reactionTimes.saveInFile();
+        Context c = getBaseContext();
+        reactionTimes.saveInFile(getBaseContext());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        reactionTimes.loadFromFile();
+        reactionTimes.loadFromFile(getBaseContext());
     }
 
     @Override

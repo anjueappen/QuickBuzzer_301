@@ -15,44 +15,81 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by anju on 03/10/15.
  */
-public class ReactionTimeBin {
+public class DataBin {
 
     private static final String FILENAME = "file.sav";
-    private static ReactionTimeBin ourInstance = new ReactionTimeBin();
-    private List<Long> times;
-    private Context baseContext;
+    private static DataBin ourInstance = new DataBin();
 
-    public static ReactionTimeBin getInstance() {
+    HashMap<String, ArrayList> mainMap = new HashMap<String, ArrayList>();
+
+    private List<Integer> p2Wins;
+    private List<Integer> p3Wins;
+    private List<Integer> p4Wins;
+    private List<Long> times;
+    private Boolean needToSave;
+
+    public static DataBin getInstance() {
         return ourInstance;
     }
 
-    private ReactionTimeBin() {
-        times = new ArrayList<Long>();
+    private DataBin() {
+        initializeMap(mainMap);
     }
 
+    private void initializeMap(HashMap<String, ArrayList> map){
+        map.put("times", new ArrayList<Long>());
+        map.put("p2Wins", new ArrayList<Integer>(Arrays.asList(0, 0)));
+        map.put("p3Wins", new ArrayList<Integer>(Arrays.asList(0, 0, 0)));
+        map.put("p4Wins", new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0)));
+    }
     public List<Long> getData(){
         return times;
     }
 
-    public void addAll(List<Long>list){
-        times.addAll(list);
+    public void addReactionTime(Long time){
+        times.add(time);
+        needToSave = Boolean.TRUE;
     }
-    public void setData(List<Long> list){
-        times = list;
+
+    public void addPlayerWin(int numPlayers, int winner){
+        int winIndex = winner - 1;
+        ArrayList<Integer> winlist;
+        switch (numPlayers){
+            case 2:
+                winlist = mainMap.get("p2Wins");
+                break;
+            case 3:
+                winlist = mainMap.get("p3Wins");
+                break;
+            default:
+                winlist = mainMap.get("p4Wins");
+                break;
+        }
+        int score = winlist.get(winIndex);
+        winlist.set(winIndex, score+1);
+        needToSave = Boolean.TRUE;
     }
-    public void clearAll(){
+
+    public void clearAll(Context c){
         times.clear();
+        saveInFile(c);
+
     }
-    public void setBaseContext(Context c){
-        baseContext = c;
+
+    public Long returnLatest(){
+        return times.get(times.size()-1);
     }
+
+
     /*MATH METHODS*/
     public Long getMaxTimeOfLast(int lastNum){
         if(times.size() == 0){
@@ -107,12 +144,18 @@ public class ReactionTimeBin {
             return sublist.get(sublist.size() / 2);
     }
 
-    public void saveInFile() {
+
+    /*Saving Methods*/
+
+    public void saveInFile(Context c) {
+        if(!needToSave){
+            return;
+        }
         try {
-            FileOutputStream fos = baseContext.openFileOutput(FILENAME, 0);
+            FileOutputStream fos = c.openFileOutput(FILENAME, 0);
             BufferedWriter out =  new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            gson.toJson(times, out);
+            gson.toJson(mainMap, out);
             out.flush();
             fos.close();
         } catch (FileNotFoundException e) {
@@ -122,20 +165,22 @@ public class ReactionTimeBin {
             // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }
+        needToSave = Boolean.FALSE;
     }
 
-    public void loadFromFile() {
+    public void loadFromFile(Context c) {
         try {
 
-            FileInputStream fis = baseContext.openFileInput(FILENAME);
+            FileInputStream fis = c.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
-            Type reactionTimeCollectionType = new TypeToken<List<Long>>() {}.getType();
+            Type dataCollectionType = new TypeToken<HashMap<String, ArrayList>>() {}.getType();
             Gson gson = new Gson();
-            times = gson.fromJson(in, reactionTimeCollectionType);
+            mainMap = gson.fromJson(in, dataCollectionType);
 
         } catch (FileNotFoundException e) {
-            times = new ArrayList<Long>();
+            mainMap = new HashMap<>();
+            initializeMap(mainMap);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

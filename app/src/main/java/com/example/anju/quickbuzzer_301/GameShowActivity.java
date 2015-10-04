@@ -71,7 +71,7 @@ public class GameShowActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_show);
+        setContentView(R.layout.activity_game_show_activity);
         Intent i = getIntent();
         numPlayers = Integer.parseInt(i.getStringExtra("numPlayers"));
         Button[] buttons = {(Button)findViewById(R.id.button1), (Button)findViewById(R.id.button2),

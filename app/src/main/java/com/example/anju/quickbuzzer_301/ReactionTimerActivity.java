@@ -22,9 +22,9 @@ public class ReactionTimerActivity extends ActionBarActivity{
         @Override
         public void onClick(View v) {
             (findViewById(R.id.game_button)).setVisibility(View.GONE);
-            game.endGame();
+            game.endIteration();
             ((TextView) findViewById(R.id.reaction_time_display)).setText(
-                    "Reaction Time: " + game.getLastReactionTime().toString() + " ms");
+                    "Reaction Time: " + DataBin.getInstance().returnLatest().toString() + " ms");
             handler.postDelayed(reactionButton, makeNewDelay());
         }
     };
@@ -41,7 +41,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     Runnable reactionButton =  new Runnable() {
         @Override
         public void run() {
-            game.startGame();
+            game.startIteration();
             Button click = (Button) findViewById(R.id.game_button);
             click.setVisibility(View.VISIBLE);
             click.setOnClickListener(reaction);
@@ -77,7 +77,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        game.storeTimesInBin();
+        DataBin.getInstance().saveInFile(getBaseContext());
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
 
