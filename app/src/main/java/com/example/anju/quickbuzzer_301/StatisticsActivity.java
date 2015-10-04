@@ -89,7 +89,26 @@ public class StatisticsActivity extends ActionBarActivity {
         avg100.setText(DataBin.getInstance().getAverageTimeOfLast(100).toString());
         avgAll.setText(DataBin.getInstance().getAverageTimeOfLast(DataBin.getInstance().getReactionTimeData().size()).toString());
 
+        TextView p2_1 = (TextView) findViewById(R.id.player2_1);
+        TextView p2_2 = (TextView) findViewById(R.id.player2_2);
+        p2_1.setText(DataBin.getInstance().getPlayerWin(2, 1).toString());
+        p2_2.setText(DataBin.getInstance().getPlayerWin(2, 2).toString());
 
+        TextView p3_1 = (TextView) findViewById(R.id.player3_1);
+        TextView p3_2 = (TextView) findViewById(R.id.player3_2);
+        TextView p3_3 = (TextView) findViewById(R.id.player3_3);
+        p3_1.setText(DataBin.getInstance().getPlayerWin(3, 1).toString());
+        p3_2.setText(DataBin.getInstance().getPlayerWin(3, 2).toString());
+        p3_3.setText(DataBin.getInstance().getPlayerWin(3, 3).toString());
+
+        TextView p4_1 = (TextView) findViewById(R.id.player4_1);
+        TextView p4_2 = (TextView) findViewById(R.id.player4_2);
+        TextView p4_3 = (TextView) findViewById(R.id.player4_3);
+        TextView p4_4 = (TextView) findViewById(R.id.player4_4);
+        p4_1.setText(DataBin.getInstance().getPlayerWin(4, 1).toString());
+        p4_2.setText(DataBin.getInstance().getPlayerWin(4, 2).toString());
+        p4_3.setText(DataBin.getInstance().getPlayerWin(4, 3).toString());
+        p4_4.setText(DataBin.getInstance().getPlayerWin(4, 4).toString());
     }
 
 

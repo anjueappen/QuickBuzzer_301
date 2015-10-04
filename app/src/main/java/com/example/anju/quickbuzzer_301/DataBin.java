@@ -65,7 +65,13 @@ public class DataBin {
         needToSave = Boolean.TRUE;
     }
 
-    public ArrayList<Long> getWinList(int numPlayers){
+    public Long getPlayerWin(int numPlayers, int player){
+        int pIndex = player - 1;
+        ArrayList<Long> list = getWinList(numPlayers);
+        return list.get(pIndex);
+    }
+
+    private ArrayList<Long> getWinList(int numPlayers){
         ArrayList<Long> winlist;
         switch (numPlayers){
             case 2:

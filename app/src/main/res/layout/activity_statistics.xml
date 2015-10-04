@@ -1,9 +1,10 @@
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:scrollbars="none"
     android:layout_weight="1"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:nestedScrollingEnabled="true">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -26,7 +27,7 @@
 
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textSize="15sp" android:text=" Last 10 Reactions"  android:layout_span="3"
+            android:textSize="15sp" android:text=" Last 10 Reactions"  android:layout_span="4"
             android:padding="18dip" android:background="#858484"
             android:textColor="#000"
             android:id="@+id/header10"
@@ -89,8 +90,7 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Max"
             android:gravity="center"
@@ -99,8 +99,7 @@
             android:paddingBottom="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Median"
             android:background="#d3d3d3"
@@ -110,8 +109,7 @@
             android:paddingBottom="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Average"
             android:background="#cac9c9"
@@ -158,7 +156,8 @@
 
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textSize="15sp" android:text=" Last 100 Reactions"  android:layout_span="3"
+
+            android:textSize="15sp" android:text=" Last 100 Reactions"  android:layout_span="4"
             android:padding="18dip"
             android:textColor="#000"
             android:id="@+id/header100"
@@ -224,9 +223,8 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="1"
             android:text="Max"
             android:gravity="center"
             android:background="#dcdcdc"
@@ -234,8 +232,7 @@
             android:paddingBottom="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Median"
             android:background="#d3d3d3"
@@ -245,8 +242,7 @@
             android:paddingBottom="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Average"
             android:background="#cac9c9"
@@ -299,7 +295,7 @@
 
         <TextView
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textSize="15sp" android:text=" All Reactions"  android:layout_span="3"
+            android:textSize="15sp" android:text=" All Reactions"  android:layout_span="4"
             android:padding="18dip" android:background="#858484"
             android:textColor="#000"
             android:id="@+id/headerAll"
@@ -325,9 +321,7 @@
             android:textIsSelectable="false"
             android:textSize="25sp"
             android:padding="5dp"
-            android:paddingTop="5dp"
-            android:maxLength="5"
-            android:maxLines="1" />
+            android:paddingTop="5dp" />
 
         <TextView
             android:id="@+id/medianAll"
@@ -338,8 +332,7 @@
             android:textSize="25sp"
             android:paddingTop="5dp"
             android:autoText="false"
-            android:maxLines="1"
-            android:maxLength="5" />
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/averageAll"
@@ -369,7 +362,8 @@
             android:gravity="center"
             android:background="#dcdcdc"
             android:layout_column="0"
-            android:paddingBottom="10dp" />
+            android:paddingBottom="10dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -380,7 +374,8 @@
             android:gravity="center"
 
             android:layout_column="1"
-            android:paddingBottom="10dp" />
+            android:paddingBottom="10dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -390,7 +385,8 @@
             android:background="#cac9c9"
             android:gravity="center"
             android:layout_column="2"
-            android:paddingBottom="10dp" />
+            android:paddingBottom="10dp"
+            android:layout_weight="1" />
 
     </TableRow>
 
@@ -422,16 +418,291 @@
 
     </TableRow>
 
-    <TableRow
+
+
+        <!---New GameShow stuff -->
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp" android:text=" 2 Player Game Wins"  android:layout_span="4"
+                android:padding="18dip"
+                android:textColor="#000"
+                android:id="@+id/header2player"
+                android:textStyle="bold"
+                android:background="#858484" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/player2_1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_column="0"
+                android:textSize="30sp"
+                android:padding="7dp"
+                android:textColor="#000000"
+                android:background="#dcdcdc"/>
+
+            <TextView
+                android:id="@+id/player2_2"
+                android:layout_weight="1" android:background="#d3d3d3"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="1"
+                android:textSize="30sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player1"
+                android:gravity="center"
+                android:background="#dcdcdc"
+                android:layout_column="0"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 2"
+                android:background="#d3d3d3"
+                android:gravity="center"
+
+                android:layout_column="1"
+                android:paddingBottom="10dp" />
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp" android:text=" 3 Player Game Wins"  android:layout_span="4"
+                android:padding="18dip"
+                android:textColor="#000"
+                android:id="@+id/header3player"
+                android:textStyle="bold"
+                android:background="#858484" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/player3_1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_column="0"
+                android:textSize="30sp"
+                android:padding="7dp"
+                android:textColor="#000000"
+                android:background="#dcdcdc"/>
+
+            <TextView
+                android:id="@+id/player3_2"
+                android:layout_weight="1" android:background="#d3d3d3"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="1"
+                android:textSize="30sp" />
+            <TextView
+                android:id="@+id/player3_3"
+                android:layout_weight="1" android:background="#cac9c9"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="1"
+                android:textSize="30sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 1"
+                android:gravity="center"
+                android:background="#dcdcdc"
+                android:layout_column="0"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 2"
+                android:background="#d3d3d3"
+                android:gravity="center"
+
+                android:layout_column="1"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 3"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:layout_column="2"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp" android:text=" 4 Player Game Wins"  android:layout_span="4"
+                android:padding="18dip"
+                android:textColor="#000"
+                android:id="@+id/header4player"
+                android:textStyle="bold"
+                android:background="#858484" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/player4_1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_column="0"
+                android:textSize="30sp"
+                android:padding="7dp"
+                android:textColor="#000000"
+                android:background="#dcdcdc"/>
+
+            <TextView
+                android:id="@+id/player4_2"
+                android:layout_weight="1" android:background="#d3d3d3"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="1"
+                android:textSize="30sp" />
+            <TextView
+                android:id="@+id/player4_3"
+                android:layout_weight="1" android:background="#cac9c9"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="2"
+                android:textSize="30sp" />
+            <TextView
+                android:id="@+id/player4_4"
+                android:layout_weight="1" android:background="#bcbbbb"
+                android:textColor="#000000"
+                android:padding="7dp" android:gravity="center"
+                android:layout_column="3"
+                android:textSize="30sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 1"
+                android:gravity="center"
+                android:background="#dcdcdc"
+                android:layout_column="0"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 2"
+                android:background="#d3d3d3"
+                android:gravity="center"
+
+                android:layout_column="1"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 3"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:layout_column="2"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Player 4"
+                android:background="#bcbbbb"
+                android:gravity="center"
+                android:layout_column="2"
+                android:paddingBottom="10dp"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </TableRow>
+
+
+        <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:transitionGroup="true">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CLEAR"
-            android:id="@+id/clear_stats_buto"
+            android:id="@+id/clear_stats_button"
             android:layout_column="1" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EMAIL"
+                android:id="@+id/email_stats_button"
+                android:layout_column="2" />
     </TableRow>
-</TableLayout> </LinearLayout>
+
+
+
+
+
+    </TableLayout>
+
+    </LinearLayout>
 </ScrollView>

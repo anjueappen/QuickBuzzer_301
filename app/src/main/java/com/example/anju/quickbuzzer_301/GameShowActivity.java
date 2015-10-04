@@ -72,6 +72,12 @@ public class GameShowActivity extends ActionBarActivity {
     };
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        DataBin.getInstance().saveInFile(getBaseContext());
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_show_activity);
