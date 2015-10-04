@@ -17,11 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReactionTimer"
-            android:label="@string/title_activity_reaction_timer"
-            android:parentActivityName=".ModeSelectionActivity" >
-        </activity>
-        <activity
             android:name=".ReactionTimerActivity"
             android:label="@string/title_activity_reaction_timer"
             android:parentActivityName=".ModeSelectionActivity" >
@@ -32,6 +27,22 @@
         <activity
             android:name=".StatisticsActivity"
             android:label="@string/title_activity_statistics" >
+        </activity>
+        <activity
+            android:name=".NumOfPlayersActivity"
+            android:label="@string/title_activity_num_of_players"
+            android:parentActivityName=".ModeSelectionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.anju.quickbuzzer_301.ModeSelectionActivity" />
+        </activity>
+        <activity
+            android:name=".GameShowActivity"
+            android:label="@string/title_activity_game_show_activity_new"
+            android:parentActivityName=".NumOfPlayersActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.anju.quickbuzzer_301.NumOfPlayersActivity" />
         </activity>
     </application>
 

@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +65,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         setContentView(R.layout.plain);
                         dialog.cancel();
-                        Intent i = new Intent(((Dialog) dialog).getContext(), ReactionTimer.class);
+                        Intent i = new Intent(((Dialog) dialog).getContext(), ReactionTimerActivity.class);
                         startActivityForResult(i, 1);
 
                     }
@@ -80,6 +79,9 @@ public class ModeSelectionActivity extends ActionBarActivity {
             @Override
             public void onClick(View v){
                 /*Make a new Activity for the multiplayer game*/
+                Intent i = new Intent(ModeSelectionActivity.this, NumOfPlayersActivity.class);
+                startActivity(i);
+
             }
         });
 

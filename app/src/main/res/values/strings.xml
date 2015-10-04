@@ -22,4 +22,15 @@
     <string name="reactions100">Last 100 Reactions</string>
     <string name="reactionsAll">All Reactions</string>
     <string name="reactions10">Last 10 Reactions</string>
+    <string name="title_activity_num_of_players">NumOfPlayersActivity</string>
+        <string name="title_game_show_dialog">Game Show Results</string>
+        <string name="gameshow_results">Winner: %1$s
+                                    Number of Players: %2$s</string>
+        <string-array name="playerCounts">
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+        </string-array>
+    <string name="title_activity_game_show_activity_new">GameShowActivityNEW</string>
+
 </resources>

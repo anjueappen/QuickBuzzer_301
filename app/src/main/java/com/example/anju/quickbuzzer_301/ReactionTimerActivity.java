@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class ReactionTimer extends ActionBarActivity{
+public class ReactionTimerActivity extends ActionBarActivity{
 
     private Handler handler = new Handler(); //UI facing
     private ReactionGame game = new ReactionGame();
