@@ -7,9 +7,9 @@
     <string name="single_player">Single Player</string>
     <string name="multiplayer">Multiplayer</string>
     <string name="reaction_timer_instructions">
-        Click the button only when
-        it appears, not before.
-
+        When the button appears,\n
+        click it quickly!\n
+        \n
         Close this dialog to begin.
     </string>
     <string name="ok">OK</string>
@@ -24,8 +24,8 @@
     <string name="reactions10">Last 10 Reactions</string>
     <string name="title_activity_num_of_players">NumOfPlayersActivity</string>
         <string name="title_game_show_dialog">Game Show Results</string>
-        <string name="gameshow_results">Winner: %1$s
-                                    Number of Players: %2$s</string>
+        <string name="gameshow_results">Player %1$s Wins!\n
+                                        Number of Players: %2$s</string>
         <string-array name="playerCounts">
             <item>2</item>
             <item>3</item>

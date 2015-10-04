@@ -51,7 +51,7 @@ public class GameShowActivity extends ActionBarActivity {
                     break;
             }
 
-            ArrayList<Long> list = DataBin.getInstance().getWinList(numPlayers);
+            DataBin.getInstance().addPlayerWin(numPlayers, Integer.parseInt(firstPush));
             AlertDialog rtDialog =  new AlertDialog.Builder(GameShowActivity.this).create();
             rtDialog.setTitle(R.string.title_game_show_dialog);
             Resources res = getResources();

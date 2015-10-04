@@ -45,8 +45,7 @@ public class ModeSelectionActivity extends ActionBarActivity {
                 /*Start the dialog*/
                 AlertDialog rtDialog =  new AlertDialog.Builder(ModeSelectionActivity.this).create();
                 rtDialog.setTitle(R.string.title_activity_reaction_timer);
-                rtDialog.setMessage("Reaction Timer Instructions go here");
-
+                rtDialog.setMessage(getResources().getString(R.string.reaction_timer_instructions));
                 rtDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
