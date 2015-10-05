@@ -23,6 +23,21 @@ import java.util.List;
 
 /**
  * Created by anju on 03/10/15.
+ *
+ * Purpose: The purpose of this class to have a consolidated place for all the data in the app to be
+ * stored. This class manages accepting and storing of the data while the app is alive, and saving
+ * and loading the data from file. This app also processes the data to some degree.
+ *
+ * Design Rationale: Since there is data incoming from two activities in the app, to be processed and
+ * displayed in another activity, it appeared to be a good idea to have the data stored in a common place
+ * where both activities could access it. Since the data already exists in this class, it seemed like a
+ * good idea to process it when the statistics activity requests data.
+ *
+ * Issues: However, in restrospect, it does not appear to be complete OO when the class storing the data
+ * and the class processing the data are the same class. It would have been better to split this class
+ * into one that strictly stores the data (called by activities that produce data) and a class that
+ * processes the data (called by the activity that displays the data).
+ *
  */
 public class DataBin {
 

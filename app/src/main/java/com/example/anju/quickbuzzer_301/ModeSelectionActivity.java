@@ -12,6 +12,20 @@ import android.view.View;
 import android.widget.Button;
 
 
+/**
+ * Created by anju on 03/10/15.
+ *
+ * Purpose: As the first activity that the user sees when they open the app, this activity is the
+ * 'home base' for the application. This activity is the gateway for all others and also tells the
+ * DataBin to store the data when we exit it.
+ *
+ * Design Rationale: The only non-UI related task this activity has is telling DataBin to save to
+ * file. As such, it didn't really make sense to put that in a separate class.
+ *
+ * Issues: I did not notice any major flaws with this class.
+ *
+ */
+
 public class ModeSelectionActivity extends ActionBarActivity {
 
     private static final String FILENAME = "file.sav";
@@ -79,13 +93,6 @@ public class ModeSelectionActivity extends ActionBarActivity {
 }
 
 
-/*    @Override
-    protected void onStop() {
-        super.onStop();
-        Context c = getBaseContext();
-        reactionTimes.saveInFile(getBaseContext());
-    }*/
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -118,41 +125,6 @@ public class ModeSelectionActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /*private void saveInFile() {
-        try {
-            FileOutputStream fos = getBaseContext().openFileOutput(FILENAME, 0);
-            BufferedWriter out =  new BufferedWriter(new OutputStreamWriter(fos));
-            Gson gson = new Gson();
-            gson.toJson(reactionTimes.getReactionTimeData(), out);
-            out.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void loadFromFile() {
-        try {
-
-            FileInputStream fis = getBaseContext().openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html, 2015-09-23
-            Type reactionTimeCollectionType = new TypeToken<List<Long>>() {}.getType();
-            Gson gson = new Gson();
-            ArrayList<Long> list = gson.fromJson(in, reactionTimeCollectionType);
-            reactionTimes.setData(list);
-
-        } catch (FileNotFoundException e) {
-            reactionTimes.setData(new ArrayList<Long>());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 
     @Override
     protected void onResume() {

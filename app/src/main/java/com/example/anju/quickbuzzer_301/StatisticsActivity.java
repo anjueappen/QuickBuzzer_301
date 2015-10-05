@@ -12,6 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Created by anju on 03/10/15.
+ *
+ * Purpose: This activity is supposed to display the statistics, notify the DataBin to clear
+ * the data when the user requests it, and act as a gateway to the email activity.
+ *
+ * Design Rationale: All the statistics UI related stuff is in this class, including user requests
+ * for the statistics (email and clearing).
+ *
+ * Issues: There is a lot of ugly repetition towards the bottom, but I'm not sure that the memory
+ * associated with lots of lines of code are a relevant issue here.
+ */
 
 public class StatisticsActivity extends ActionBarActivity {
     private Handler handler;

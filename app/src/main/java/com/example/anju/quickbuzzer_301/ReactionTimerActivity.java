@@ -12,7 +12,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Random;
-
+/**
+ * Created by anju on 03/10/15.
+ *
+ * Purpose: Repeated show the user a button after a delay, tell the ReactionGame class to calculate
+ * reaction time when the user clicks, and repeat.
+ *
+ * Design Rationale: Again, this activity simply loops over the user clicking a button, not much other
+ * activity other than the ReactionGame interceding to calculate the reaction time.
+ *
+ * Issues: Nothing obvious. (to me at least)
+ *
+ */
 public class ReactionTimerActivity extends ActionBarActivity{
 
     private Handler handler = new Handler(); //UI facing

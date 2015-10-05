@@ -14,6 +14,18 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+/**
+ * Created by anju on 03/10/15.
+ *
+ * Purpose: This activity does the following: displays buttons to users, gets the first button
+ * clicked and sends the player who clicked that button to the DataBin for storage.
+ *
+ * Design Rationale: Unlike the reaction time activity, this activity did not have too much non-UI
+ * related functionality. Therefore all of the functionality is in this class.
+ *
+ * Issues: I didn't notice anything major.
+ *
+ */
 public class GameShowActivity extends ActionBarActivity {
     private Integer numPlayers;
     private Handler handler = new Handler();

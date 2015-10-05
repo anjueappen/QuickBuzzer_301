@@ -7,15 +7,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ *
+ * Purpose: This activity allows the user to send an email of the their data.
+ *
+ * Design Rationale: The screen does appear to leave the application(into the email) , so the user is
+ * notified before the app goes the email sending screen.
+ *
+ * Issues: None noticed.
+ *
+ */
 
 public class SendEmailActivity extends ActionBarActivity {
 
     Button buttonSend;
-    EditText textTo;
-    EditText textSubject;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +35,6 @@ public class SendEmailActivity extends ActionBarActivity {
 
         email.setData(Uri.parse("mailto:"));
         email.putExtra(Intent.EXTRA_EMAIL, new String[]{"anjueappen@gmail.com"});
-        //email.putExtra(Intent.EXTRA_SUBJECT, subject);
         email.putExtra(Intent.EXTRA_TEXT, DataBin.getInstance().getAllData().toString());
         buttonSend.setOnClickListener(new OnClickListener() {
             @Override

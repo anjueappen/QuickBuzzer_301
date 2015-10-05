@@ -9,7 +9,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-
+/**
+ *
+ * Purpose: This activity only asks the user for how many players to play the Buzzer game and passes
+ * this onto the Buzzer activity, itself.
+ *
+ * Design Rationale: A spinner allows the user to see the choices they can make and not enter a number
+ * that is too large or too small (more than what the Game Show Buzzer can handle).
+ *
+ * Issues: Nothing noted.
+ *
+ */
 public class NumOfPlayersActivity extends ActionBarActivity {
 
        @Override
