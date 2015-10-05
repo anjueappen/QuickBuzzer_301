@@ -1,0 +1,33 @@
+CMPUT 301 Assignment 1
+This Android application containing an individual reaction timer and collective 
+game-show buzzer to calculate and display the user's personal reaction speeds 
+and in relation to other users. It can save, display and email this data. 
+
+By: Anju Eappen
+CCID: aeappen
+
+Project GitHub Repo: https://github.com/anjueappen/QuickBuzzer_301.git
+Video Demo (On GitHub): 
+https://github.com/anjueappen/QuickBuzzer_301/blob/master/aeappen_reflex_video.mp4
+Project APK: https:/bin/app-release.apk
+
+Consulted With:
+Andrea McIntosh
+Jenna Hatchard
+Dylan Ashley
+Michelle Mabuyo
+
+References:
+2015-09-20 http://www.mopri.de/2010/timertask-bad-do-it-the-android-way-use-a-handler/ 
+2015-09-20 http://androidexample.com/Table_Layout_-_Android_Example/index.php?view=article_discription&aid=74&aaid=98
+2015-10-1  http://stackoverflow.com/questions/4984313/spacing-between-listview-items-android by Nik Reiman
+2015-10-1  http://stackoverflow.com/questions/24006990/singleton-class-returning-nullpointerexception by GRadar
+2015-10-1  http://javarevisited.blogspot.ca/2012/12/how-to-solve-javalangclasscastexception-java.html
+2015-10-1  http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
+2015-10-3 http://www.developerphil.com/dont-store-data-in-the-application-object/
+2015-10-4 http://code.tutsplus.com/tutorials/quick-tip-enabling-users-to-send-email-from-your-android-applications-the-easy-way--mobile-1686
+2015-10-03 https://developer.appcelerator.com/question/155387/exception-occured-while-building-android-project-error-traceback-most-recent-call-last
+2015-10-02 http://stackoverflow.com/questions/11449246/nullpointerexception-trying-to-load-a-file by Jim Garrison
+
+Also consulted Android documentation (http://developer.android.com/index.html) and Java
+documentation (http://docs.oracle.com/javase/7/docs/api/).
