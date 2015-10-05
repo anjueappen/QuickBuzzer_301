@@ -49,7 +49,8 @@ import java.util.List;
  * Issues: However, in restrospect, it does not appear to be complete OO when the class storing the data
  * and the class processing the data are the same class. It would have been better to split this class
  * into one that strictly stores the data (called by activities that produce data) and a class that
- * processes the data (called by the activity that displays the data).
+ * processes the data (called by the activity that displays the data). Or maybe even three: one to store
+ * data, one to process data and one to save data.
  *
  */
 public class DataBin {
@@ -57,7 +58,7 @@ public class DataBin {
     private static final String FILENAME = "file.sav";
     private static DataBin ourInstance = new DataBin();
 
-    HashMap<String, ArrayList<Long>> mainMap = new HashMap<String, ArrayList<Long>>();
+    private HashMap<String, ArrayList<Long>> mainMap = new HashMap<String, ArrayList<Long>>();
 
     private Boolean needToSave;
 
@@ -66,15 +67,15 @@ public class DataBin {
     }
 
     private DataBin() {
-        initializeMap(mainMap);
+        initializeMap();
         needToSave = Boolean.FALSE;
     }
 
-    private void initializeMap(HashMap<String, ArrayList<Long>> map){
-        map.put("times", new ArrayList<Long>());
-        map.put("twoWins", new ArrayList<Long>(Arrays.asList(0L, 0L)));
-        map.put("threeWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L)));
-        map.put("fourWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L, 0L)));
+    private void initializeMap(){
+        mainMap.put("times", new ArrayList<Long>());
+        mainMap.put("twoWins", new ArrayList<Long>(Arrays.asList(0L, 0L)));
+        mainMap.put("threeWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L)));
+        mainMap.put("fourWins", new ArrayList<Long>(Arrays.asList(0L, 0L, 0L, 0L)));
     }
     public List<Long> getReactionTimeData(){
         return mainMap.get("times");
@@ -119,12 +120,12 @@ public class DataBin {
     }
 
     public void clearAll(Context c){
-        initializeMap(mainMap);
+        initializeMap();
         needToSave = Boolean.TRUE;
         saveInFile(c);
     }
 
-    public Long returnLatest(){
+    public Long returnLatestReactionTime(){
 
         ArrayList<Long> times = mainMap.get("times");
         return times.get(times.size() - 1);
@@ -193,6 +194,8 @@ public class DataBin {
 
     /*Saving Methods*/
 
+    //Taken (and slightly modified) from CMPUT 301 labs.
+
     public void saveInFile(Context c) {
         if(!needToSave){
             return;
@@ -225,8 +228,7 @@ public class DataBin {
             mainMap = gson.fromJson(in, dataCollectionType);
 
         } catch (FileNotFoundException e) {
-            mainMap = new HashMap<>();
-            initializeMap(mainMap);
+            initializeMap();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -47,7 +47,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
             (findViewById(R.id.game_button)).setVisibility(View.GONE);
             game.endIteration();
             ((TextView) findViewById(R.id.reaction_time_display)).setText(
-                    "Reaction Time: " + DataBin.getInstance().returnLatest().toString() + " ms");
+                    "Reaction Time: " + DataBin.getInstance().returnLatestReactionTime().toString() + " ms");
             handler.postDelayed(reactionButton, makeNewDelay());
         }
     };
@@ -129,7 +129,7 @@ public class ReactionTimerActivity extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    private int makeNewDelay(){
+        private int makeNewDelay(){
         return (01 + new Random().nextInt(1995));
     }
 
