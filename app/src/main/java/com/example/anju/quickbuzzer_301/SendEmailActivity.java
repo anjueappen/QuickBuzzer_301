@@ -16,25 +16,19 @@ public class SendEmailActivity extends ActionBarActivity {
     Button buttonSend;
     EditText textTo;
     EditText textSubject;
-    EditText textMessage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_email);
 
-        textTo = (EditText) findViewById(R.id.editTextTo);
-        textSubject = (EditText) findViewById(R.id.editTextSubject);
         buttonSend = (Button) findViewById(R.id.buttonSend);
-        String to = textTo.getText().toString();
-        String subject = textSubject.getText().toString();
-        //String message = textMessage.getText().toString();
 
         final Intent email = new Intent(Intent.ACTION_SENDTO);
 
         email.setData(Uri.parse("mailto:"));
-        email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
-        email.putExtra(Intent.EXTRA_SUBJECT, subject);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"anjueappen@gmail.com"});
+        //email.putExtra(Intent.EXTRA_SUBJECT, subject);
         email.putExtra(Intent.EXTRA_TEXT, DataBin.getInstance().getAllData().toString());
         buttonSend.setOnClickListener(new OnClickListener() {
             @Override
@@ -45,7 +39,7 @@ public class SendEmailActivity extends ActionBarActivity {
                     Toast.makeText(SendEmailActivity.this,
                             "There are no email clients installed", Toast.LENGTH_SHORT).show();
                 }
-
+                finish();
             }
         });
     }

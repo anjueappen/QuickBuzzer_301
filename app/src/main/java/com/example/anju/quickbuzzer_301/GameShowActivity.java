@@ -64,10 +64,11 @@ public class GameShowActivity extends ActionBarActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     setContentView(R.layout.plain);
                     dialog.cancel();
-                    //handler.post(gameshow);
+                    finish();
                 }
             });
             rtDialog.show();
+
         }
     };
 

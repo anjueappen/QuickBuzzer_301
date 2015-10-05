@@ -17,7 +17,7 @@
     <string name="title_activity_single_player_reaction_timer">SinglePlayerReactionTimer</string>
     <string name="reaction_time">Reaction Time:</string>
     <string name="statistics">Statistics</string>
-    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="title_activity_statistics">Statistics</string>
     <string name="max_time">Fastest Time</string>
     <string name="reactions100">Last 100 Reactions</string>
     <string name="reactionsAll">All Reactions</string>
@@ -33,5 +33,6 @@
         </string-array>
     <string name="title_activity_game_show_activity_new">Game Show Activity</string>
     <string name="title_activity_send_email">Send Email</string>
+    <string name="leaving_message">You are about to leave this application for the email application.</string>
 
 </resources>
