@@ -66,7 +66,7 @@ public class DataBin {
         return ourInstance;
     }
 
-    private DataBin() {
+    public DataBin() {
         initializeMap();
         needToSave = Boolean.FALSE;
     }
