@@ -2,6 +2,7 @@ package com.example.anju.quickbuzzer_301;
 
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 
 import java.util.List;
 
@@ -105,16 +106,50 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         databin.addReactionTime(new Long(556));
         databin.addReactionTime(new Long(705));
         assertTrue(databin.getMinTimeOfLast(10) == 353L);  // index greater than size
-
     }
 
-
-    public void getAverageOfLast(){
+    // return average for empty list
+    public void testGetAverageOfLastEmpty(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
+        assertTrue(databin.getAverageTimeOfLast(1) == 0.0);
     }
 
-    public void getMedianOfLast(){
+    // get min when input is equal to or less than size of list
+    public void testGetAverageOfLastIndex(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(520));
+        databin.addReactionTime(new Long(530));
+        databin.addReactionTime(new Long(762));
+        for (Long num :databin.getReactionTimeData()) {
+            Log.d("TESTDEBUG", "contains " + String.valueOf(num));
+        }
+        Log.d("TESTDEBUG", "average of index 3 " + String.valueOf(databin.getAverageTimeOfLast(3)));
+        assertTrue(databin.getAverageTimeOfLast(3).equals(604.0));
+    }
+
+    // get min when input is index greater than size of list
+    public void testGetAverageOfLastIndexGreater(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        databin.addReactionTime(new Long(353));
+        databin.addReactionTime(new Long(1000));
+        databin.addReactionTime(new Long(556));
+        databin.addReactionTime(new Long(705));
+        databin.addReactionTime(new Long(1008));
+        Log.d("TESTDEBUG", "average of index 10 " + String.valueOf(databin.getAverageTimeOfLast(10)));
+        assertTrue(databin.getAverageTimeOfLast(10) == 653.5);  // index greater than size
+
+    }
+
+
+
+    public void testGetMedianOfLast(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
     }
