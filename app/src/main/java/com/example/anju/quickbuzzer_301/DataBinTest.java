@@ -76,11 +76,38 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
 
     // TODO negative index?
 
-    // reset then get min
-    public void testGetMinOfLast(){
+    // return min for empty list
+    public void testGetMinOfLastEmpty(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
+        assertTrue(databin.getMinTimeOfLast(1) == 0L);
     }
+
+    // get min when input is equal to or less than size of list
+    public void testGetMinOfLastIndex(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        assertTrue(databin.getMinTimeOfLast(3)== 450L);  // index equal to size
+    }
+
+    // get min when input is index greater than size of list
+    public void testGetMinOfLastIndexGreater(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        databin.addReactionTime(new Long(353));
+        databin.addReactionTime(new Long(1000));
+        databin.addReactionTime(new Long(556));
+        databin.addReactionTime(new Long(705));
+        assertTrue(databin.getMaxTimeOfLast(10) == 353L);  // index greater than size
+
+    }
+
 
     public void getAverageOfLast(){
         databin.getReactionTimeData().clear(); // start fresh for each test
