@@ -32,8 +32,8 @@ public class ModeSelectionUITest
         mActivity = getActivity();
     }
 
-    @Test
-    public void validateTimerDialogOnButtonPress() {
+
+    public void testValidateTimerDialogOnButtonPress() {
         onView(withId(R.id.single_player_button)).perform(click());
         withText("When the button appears,\\n\n" +
                 "        click it quickly!\\n\n" +
