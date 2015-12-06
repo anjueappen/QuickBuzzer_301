@@ -57,7 +57,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         databin.addReactionTime(new Long(450));
         databin.addReactionTime(new Long(601));
         databin.addReactionTime(new Long(555));
-        assertTrue(databin.getMaxTimeOfLast(3)==new Long(601));  // index equal to size
+        assertTrue(databin.getMaxTimeOfLast(3)== 601L);  // index equal to size
     }
 
     // get max when input is index greater than size of list
@@ -70,7 +70,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         databin.addReactionTime(new Long(1000));
         databin.addReactionTime(new Long(556));
         databin.addReactionTime(new Long(705));
-        assertTrue(databin.getMaxTimeOfLast(10) == new Long(1000));  // index greater than size
+        assertTrue(databin.getMaxTimeOfLast(10) == 1000L);  // index greater than size
 
     }
 
