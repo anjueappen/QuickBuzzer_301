@@ -33,31 +33,44 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testReturnLastestReaction(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(SLOW_REACTION_TIME);
+        databin.addReactionTime(FAST_REACTION_TIME);
+        assertTrue(databin.returnLatestReactionTime()==FAST_REACTION_TIME);
     }
+
+    /*
+    * Test branches and functionality
+    * */
 
     // reset then get max for different numbers of results
     public void testGetMaxOfLast(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
     }
 
     // reset then get min
     public void testGetMinOfLast(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
     }
 
     public void getAverageOfLast(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
     }
 
     public void getMedianOfLast(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
     }
 
     // add negative time - impossible given how player uses app
     // but tested for completeness
     public void testAddBadReactionTime(){
-
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
     }
 
 }
