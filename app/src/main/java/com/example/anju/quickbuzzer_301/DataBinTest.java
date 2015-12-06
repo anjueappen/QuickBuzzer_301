@@ -115,6 +115,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         assertTrue(databin.getAverageTimeOfLast(1) == 0.0);
     }
 
+    // TODO this test fails due to sublist excluding the last index
     // get min when input is equal to or less than size of list
     public void testGetAverageOfLastIndex(){
         databin.getReactionTimeData().clear(); // start fresh for each test
