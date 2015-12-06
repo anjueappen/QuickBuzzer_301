@@ -104,7 +104,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         databin.addReactionTime(new Long(1000));
         databin.addReactionTime(new Long(556));
         databin.addReactionTime(new Long(705));
-        assertTrue(databin.getMaxTimeOfLast(10) == 353L);  // index greater than size
+        assertTrue(databin.getMinTimeOfLast(10) == 353L);  // index greater than size
 
     }
 
