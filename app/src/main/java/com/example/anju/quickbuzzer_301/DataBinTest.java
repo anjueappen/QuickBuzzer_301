@@ -9,7 +9,6 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
 
     protected Long FAST_REACTION_TIME = new Long(300);
     protected Long SLOW_REACTION_TIME = new Long(20000);
-    //private DataBin databin = DataBin.getInstance();
     DataBin databin = DataBin.getInstance();
 
     public DataBinTest() {
@@ -44,8 +43,23 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
     * Test branches and functionality
     * */
 
-    // reset then get max for different numbers of results
-    public void testGetMaxOfLast(){
+    // return max for empty list
+    public void testGetMaxOfLastEmpty(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        assertTrue(databin.getMaxTimeOfLast(1)==0L);
+    }
+
+    // get max when input is equal to last index in list
+    public void testGetMaxOfLastIndex(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        
+
+    }
+
+    // get max when input is index greater than last index in list
+    public void testGetMaxOfLastIndexGreater(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
     }
