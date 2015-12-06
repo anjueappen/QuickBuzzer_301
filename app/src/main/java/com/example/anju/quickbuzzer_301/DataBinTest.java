@@ -47,22 +47,34 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
     public void testGetMaxOfLastEmpty(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
-        assertTrue(databin.getMaxTimeOfLast(1)==0L);
+        assertTrue(databin.getMaxTimeOfLast(1) == 0L);
     }
 
-    // get max when input is equal to last index in list
+    // get max when input is equal to or less than size of list
     public void testGetMaxOfLastIndex(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
-        
-
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        assertTrue(databin.getMaxTimeOfLast(3)==new Long(601));  // index equal to size
     }
 
-    // get max when input is index greater than last index in list
+    // get max when input is index greater than size of list
     public void testGetMaxOfLastIndexGreater(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        databin.addReactionTime(new Long(1000));
+        databin.addReactionTime(new Long(556));
+        databin.addReactionTime(new Long(705));
+        assertTrue(databin.getMaxTimeOfLast(10) == new Long(1000));  // index greater than size
+
     }
+
+    // TODO negative index?
 
     // reset then get min
     public void testGetMinOfLast(){
