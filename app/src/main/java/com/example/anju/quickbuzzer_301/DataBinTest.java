@@ -167,7 +167,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         for (Long num :databin.getReactionTimeData()) {
             Log.d("TESTDEBUG", "contains " + String.valueOf(num));
         }
-        Log.d("TESTDEBUG", "median of last 4 even" + String.valueOf(databin.getMedianTimeOfLast(3)));
+        Log.d("TESTDEBUG", "median of last 4 even" + String.valueOf(databin.getMedianTimeOfLast(4)));
         assertTrue(databin.getMedianTimeOfLast(4).equals(605.0));
     }
 
@@ -226,6 +226,7 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
     public void testAddBadReactionTime(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(-401));
     }
 
 }
