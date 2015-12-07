@@ -103,5 +103,23 @@ public class ModeSelectionUITest
         withText("All Reactions").matches(isDisplayed());
 
     }
+    public void testStatisticsClear(){
+        onView(withId(R.id.statistics_button)).perform(click());
+        withText("Last 10 Reactions").matches(isDisplayed());
+        withText("Last 100 Reactions").matches(isDisplayed());
+        withText("All Reactions").matches(isDisplayed());
+        onView(withId(R.id.clear_stats_button)).perform(scrollTo(), click());
 
+    }
+
+    public void testStatsEmail(){
+        onView(withId(R.id.statistics_button)).perform(click());
+        withText("Last 10 Reactions").matches(isDisplayed());
+        withText("Last 100 Reactions").matches(isDisplayed());
+        withText("All Reactions").matches(isDisplayed());
+        onView(withId(R.id.email_stats_button)).perform(scrollTo(), click());
+        withText("You are about to leave this application for the email application.").matches(isDisplayed());
+        //onView(withId(R.id.buttonSend)).perform(click());
+
+    }
 }

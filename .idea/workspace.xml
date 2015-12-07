@@ -29,29 +29,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApplicationTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/anju/quickbuzzer_301/ApplicationTest.java">
+      <file leaf-file-name="ModeSelectionUITest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/anju/quickbuzzer_301/ModeSelectionUITest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="5" selection-start-line="18" selection-start-column="3" selection-end-line="25" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.17766498">
+              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="method#setUp#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testTimerDialogOnButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testTimerActivityErrorMessage#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testTimerActivityButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testGameShowButtonPress2Players#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testGameShowButtonPress3Players#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testGameShowButtonPress4Players#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testStatistics#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testStatisticsClear#0;class#ModeSelectionUITest#0" expanded="false" />
+                <element signature="method#testStatsEmail#0;class#ModeSelectionUITest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModeSelectionUITest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/anju/quickbuzzer_301/ModeSelectionUITest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.64467">
-              <caret line="101" column="62" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1038#1039#0" expanded="true" />
-                <element signature="e#1088#1089#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="activity_send_email.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_send_email.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -1709,6 +1717,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QuickBuzzer_301" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1740,6 +1770,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="quickbuzzer_301" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QuickBuzzer_301" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1997,7 +2037,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6006441" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2063,9 +2103,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
+            <element signature="method#setUp#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerDialogOnButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerActivityErrorMessage#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerActivityButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress2Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress3Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress4Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatistics#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatisticsClear#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatsEmail#0;class#ModeSelectionUITest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2230,14 +2277,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/anju/quickbuzzer_301/SendEmailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_send_email.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/anju/quickbuzzer_301/ModeSelectionUITest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.64467">
-          <caret line="101" column="62" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.17766498">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
+            <element signature="method#setUp#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerDialogOnButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerActivityErrorMessage#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testTimerActivityButtonPress#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress2Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress3Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testGameShowButtonPress4Players#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatistics#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatisticsClear#0;class#ModeSelectionUITest#0" expanded="false" />
+            <element signature="method#testStatsEmail#0;class#ModeSelectionUITest#0" expanded="false" />
           </folding>
         </state>
       </provider>
