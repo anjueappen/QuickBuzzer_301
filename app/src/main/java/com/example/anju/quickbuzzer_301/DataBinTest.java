@@ -153,8 +153,24 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         assertTrue(databin.getReactionTimeData().isEmpty());
         assertTrue(databin.getMedianTimeOfLast(1) == 0.0);
     }
+
     // TODO need an odd and even case?
-    public void testGetMedianOfLastIndex(){
+    public void testGetMedianOfLastIndexEven(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(520));
+        databin.addReactionTime(new Long(530));
+        databin.addReactionTime(new Long(762));
+        databin.addReactionTime(new Long(680));
+        for (Long num :databin.getReactionTimeData()) {
+            Log.d("TESTDEBUG", "contains " + String.valueOf(num));
+        }
+        Log.d("TESTDEBUG", "median of last 4 " + String.valueOf(databin.getMedianTimeOfLast(3)));
+        assertTrue(databin.getMedianTimeOfLast(4).equals(605.0));
+    }
+
+    public void testGetMedianOfLastIndexOdd(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
         databin.addReactionTime(new Long(450));
@@ -164,12 +180,13 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         for (Long num :databin.getReactionTimeData()) {
             Log.d("TESTDEBUG", "contains " + String.valueOf(num));
         }
-        Log.d("TESTDEBUG", "average of index 3 " + String.valueOf(databin.getMedianTimeOfLast(3)));
-        assertTrue(databin.getMedianTimeOfLast(3).equals(604.0));
+        Log.d("TESTDEBUG", "median of last 3 " + String.valueOf(databin.getMedianTimeOfLast(3)));
+        assertTrue(databin.getMedianTimeOfLast(3).equals(530));
     }
 
-    // get min when input is index greater than size of list
-    public void testGetMedianOfLastIndexGreater(){
+
+
+    public void testGetMedianOfLastIndexGreaterEven(){
         databin.getReactionTimeData().clear(); // start fresh for each test
         assertTrue(databin.getReactionTimeData().isEmpty());
         databin.addReactionTime(new Long(450));
@@ -181,10 +198,24 @@ public class DataBinTest extends ActivityInstrumentationTestCase2 {
         databin.addReactionTime(new Long(705));
         databin.addReactionTime(new Long(1008));
         Log.d("TESTDEBUG", "median of index 10 " + String.valueOf(databin.getMedianTimeOfLast(10)));
-        assertTrue(databin.getMedianTimeOfLast(10) == 653.5);  // index greater than size
+        assertTrue(databin.getMedianTimeOfLast(10) == 578.5);  // index greater than size
 
     }
 
+    public void testGetMedianOfLastIndexGreaterOdd(){
+        databin.getReactionTimeData().clear(); // start fresh for each test
+        assertTrue(databin.getReactionTimeData().isEmpty());
+        databin.addReactionTime(new Long(450));
+        databin.addReactionTime(new Long(601));
+        databin.addReactionTime(new Long(555));
+        databin.addReactionTime(new Long(353));
+        databin.addReactionTime(new Long(1000));
+        databin.addReactionTime(new Long(556));
+        databin.addReactionTime(new Long(705));
+        Log.d("TESTDEBUG", "median of index 10 " + String.valueOf(databin.getMedianTimeOfLast(10)));
+        assertTrue(databin.getMedianTimeOfLast(10) == 556);  // index greater than size
+
+    }
 
 
     // add negative time - impossible given how player uses app
